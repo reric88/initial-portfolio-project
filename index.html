@@ -1,150 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Portfolio Navbar">
-   <meta name="author" content="Eric Collard">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/9fbf6c4d27.js" crossorigin="anonymous"></script>
-   <title>Portfolio Navbar</title>
-</head>
-<body>
-
-<!-- #region Navbar -->
-<div class="navbar-container">
-<nav class="navbar">
-    <div class="navbar-sub-menu">
-        <div class="test home"></div>
-        <div class="test about"></div>
-        <div class="test contact"></div>
-        <div class="test projects"></div>
-        <div class="test qual"></div>
-        <div class="test social"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio Navbar" />
+    <meta name="author" content="Eric Collard" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/9fbf6c4d27.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Portfolio Navbar</title>
+  </head>
+  <body>
+    <!-- #region Navbar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <div class="navbar-sub-menu">
+          <div class="test home"></div>
+          <div class="test about"></div>
+          <div class="test contact"></div>
+          <div class="test projects"></div>
+          <div class="test qual"></div>
+          <div class="test social"></div>
+        </div>
+        <div class="link-menu">
+          <a href="#" class="navbar-link" id="home"
+            ><i class="fas fa-home"></i
+          ></a>
+          <a href="#" class="navbar-link"><i class="fas fa-question"></i></a>
+          <a href="#" class="navbar-link"
+            ><i class="fas fa-comment-dots"></i
+          ></a>
+          <a href="#" class="navbar-link"><i class="fas fa-folder-open"></i></a>
+          <a href="#" class="navbar-link"><i class="fas fa-scroll"></i></a>
+          <a href="#" class="navbar-link"><i class="fas fa-user-plus"></i></a>
+        </div>
+      </nav>
     </div>
-    <div class="link-menu">
-        <a href="#" class="navbar-link" id="home"><i class="fas fa-home"></i></a>
-        <a href="#" class="navbar-link" ><i class="fas fa-question"></i></a>
-        <a href="#" class="navbar-link"><i class="fas fa-comment-dots" ></i></a>
-        <a href="#" class="navbar-link"><i class="fas fa-folder-open" ></i></a>
-        <a href="#" class="navbar-link"><i class="fas fa-scroll" ></i></a>
-        <a href="#" class="navbar-link"><i class="fas fa-user-plus" ></i></a>
-</div>
-</nav>
-</div>
-<!-- #endregion -->
+    <!-- #endregion -->
 
-<!-- #region Text BG Container -->
-<div id="container">
-    <div id="hdiv-container">
-      <div id="hdiv1" class="break">
-        <h1 class="text-hollow">WebDevelopment</h1>
-      </div>
-      <br>
-      <div id="hdiv2">
-        <h1 class="text-solid">HTML</h1>
-      </div>
-      <div id="hdiv3">
-        <h1 class="text-hollow">Bootstrap</h1>
-      </div>
-      <div id="hdiv4" class="break">
-        <h1 class="text-hollow">JavaScript</h1>
-      </div>
-      <div id="hdiv5">
-        <h1 class="text-hollow">CSS</h1>
-      </div>
-      <div id="hdiv6">
-        <h1 class="text-solid">GML</h1>
-      </div>
-      <div id="hdiv7" class="break">
-        <h1 class="text-hollow">GraphicDesign</h1>
-      </div>
-      <div id="hdiv8">
+    <!-- #region Text BG Container -->
+    <div id="container">
+      <div id="hdiv-container">
+        <div id="hdiv1" class="break">
+          <h1 class="text-hollow">WebDevelopment</h1>
+        </div>
+        <br />
+        <div id="hdiv2">
+          <h1 class="text-solid">HTML</h1>
+        </div>
+        <div id="hdiv3">
+          <h1 class="text-hollow">Bootstrap</h1>
+        </div>
+        <div id="hdiv4" class="break">
+          <h1 class="text-hollow">JavaScript</h1>
+        </div>
+        <div id="hdiv5">
+          <h1 class="text-hollow">CSS</h1>
+        </div>
+        <div id="hdiv6">
+          <h1 class="text-solid">GML</h1>
+        </div>
+        <div id="hdiv7" class="break">
+          <h1 class="text-hollow">GraphicDesign</h1>
+        </div>
+        <div id="hdiv8">
           <h1 class="text-solid">Python</h1>
+        </div>
       </div>
     </div>
-  </div>
-<!-- #endregion -->
+    <!-- #endregion -->
 
-<div id="tab-container">
-    <a href="#" class="a-tab" onclick="show1(), typingText()" >
+    <!-- #region About/Contact/projects -->
+    <div id="tab-container">
+      <a href="#" class="a-tab" onclick="show1(), typingText()">
         <label for="about-btn" class="active-label">
-          <input type="radio" name="tab" value="display-about" id="about-btn">
-      <div id="about-title" class="tab-title">
-          <h2 class="tab-text">About</h2>
-      </div>
-  
-  </label>
-  </a>
-  
-  <a href="#" class="a-tab" for="tab">
-      <label for="contact-btn">
-        <input type="radio" name="tab" value="display-contact" onclick="show2()" id="contact-btn">
-      <div id="contact-title" class="tab-title">
-          <h2 class="tab-text">Contact</h2>
-      </div>
-  </label>
-  </a>
-  
-  <a href="#" class="a-tab" for="tab" onclick="show3(), placeType()">
-      <label for="placeholder-btn">
-        <input type="radio" name="tab" value="display-placeholder" id="placeholder-btn">
-      <div id="placeholder-title" class="tab-title">
-          <h2 class="tab-text">Place</h2>
-      </div>
-  </label>
-  </a>
-  </div>
+          <input type="radio" name="tab" value="display-about" id="about-btn" />
+          <div id="about-title" class="tab-title">
+            <h2 class="tab-text">About</h2>
+          </div>
+        </label>
+      </a>
 
+      <a href="#" class="a-tab" for="tab">
+        <label for="contact-btn">
+          <input
+            type="radio"
+            name="tab"
+            value="display-contact"
+            onclick="show2()"
+            id="contact-btn"
+          />
+          <div id="contact-title" class="tab-title">
+            <h2 class="tab-text">Contact</h2>
+          </div>
+        </label>
+      </a>
 
-  <div id="textbox">
-    <p class="hide show" name="one" id="about-p"></p>
-
-
-    <div id="contact-div" class="hide" name="two">
-      <div id="contact-div-title">
-      <h3>Get in touch!</h3>
-    </div>
-    <form action="">
-    <div class="label-container">
-      <label for="first-name">
-        <input type="text" name="first-name" class="contact-info contact-input" id="first-name" placeholder="First Name" required>
-      </label>
+      <a href="#" class="a-tab" for="tab" onclick="show3(), projectsType()">
+        <label for="projects-btn">
+          <input
+            type="radio"
+            name="tab"
+            value="display-projects"
+            id="projects-btn"
+          />
+          <div id="projects-title" class="tab-title">
+            <h2 class="tab-text">Projects</h2>
+          </div>
+        </label>
+      </a>
     </div>
 
-      <div class="label-container">
-        <label for="last-name">
-          <input type="text" name="last-name" class="contact-info contact-input" id="last-name" placeholder="Last Name" required>
-        </label>
-      </div>
-      <br>
-      <div class="label-container">
-        <label for="email">
-          <input type="email" name="email" class="contact-info contact-input" id="email" placeholder="Email" required>
-        </label>
-      </div>
+    <div id="textbox">
+      <p class="hide show" name="one" id="about-p"></p>
+      <div id="contact-div" class="hide" name="two">
+        <div id="contact-div-title">
+          <h3>Get in touch!</h3>
+        </div>
+        <form action="https://formsubmit.co/rcollard88@gmail.com" method="POST">
+          <div class="label-container">
+            <label for="first-name">
+              <input
+                type="text"
+                name="first-name"
+                class="contact-info contact-input"
+                id="first-name"
+                placeholder="First Name"
+                required
+              />
+            </label>
+          </div>
 
-      <div class="label-container">
-        <label for="organization">
-          <input type="text" name="organization" class="contact-info contact-input" id="organization" placeholder="Organization">
-        </label>
-      </div>
+          <div class="label-container">
+            <label for="last-name">
+              <input
+                type="text"
+                name="last-name"
+                class="contact-info contact-input"
+                id="last-name"
+                placeholder="Last Name"
+                required
+              />
+            </label>
+          </div>
+          <br />
+          <div class="label-container">
+            <label for="email">
+              <input
+                type="email"
+                name="email"
+                class="contact-info contact-input"
+                id="email"
+                placeholder="Email"
+                required
+              />
+            </label>
+          </div>
 
-      <div id="text-container">
-        <textarea name="comments" class="contact-input" id="comments" cols="14" rows="5" placeholder="Type your comments here."></textarea>
+          <div class="label-container">
+            <label for="organization">
+              <input
+                type="text"
+                name="organization"
+                class="contact-info contact-input"
+                id="organization"
+                placeholder="Organization"
+              />
+            </label>
+          </div>
+
+          <div id="text-container">
+            <textarea
+              name="comments"
+              class="contact-input"
+              id="comments"
+              cols="14"
+              rows="5"
+              placeholder="Type your comments here."
+            ></textarea>
+          </div>
+          <button id="submit-btn">Submit!</button>
+        </form>
       </div>
-      <button id="submit-btn">Submit!</button>
-    </form>
+      <!-- #endregion -->
+
+      
+      <!-- #region Image Slider -->
+      <div
+        class="slider-container hide"
+        name="three"
+        id="projects-p"
+        onclick="show3()"
+      >
+        <div class="left-slide">
+          <div class="bg-video">
+            <a href="./VideoBackgroundProject/vg.html" target=”_blank”><h1>Video as Background</h1></a>
+            <p>Simple webpage with a video set as background and a link to About Me</p>
+          </div>
+          <div class="bg-full-webpage">
+            <a href="./FullWebpageProject/fullWebpage.html" target=”_blank”><h1>Full Webpage Project</h1></a>
+            <p>An example of a full webpage styled with CSS</p>
+          </div>
+          <div class="bg-lepain">
+            <a href="./LePain/lePain.html" target=”_blank”><h1>Le Pain</h1></a>
+            <p>Webpage designed with bootstrap</p>
+          </div>
+          <div class="bg-wheel">
+            <a href="./WhatWeEatin/wheel.html" target=”_blank”><h1>Wut We Eatin'?</h1></a>
+            <p>JavaScript wheel meant to simulate asking your significant other where to eat!</p>
+          </div>
+        </div>
+
+        <div class="right-slide">
+          <div class="wheel"></div>
+          <div class="lepain"></div>
+          <div class="full-webpage"></div>
+          <div class="video"></div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="down-button">
+            <i class="fas fa-arrow-down"></i>
+          </button>
+          <button class="up-button">
+            <i class="fas fa-arrow-up"></i>
+          </button>
+        </div>
+      </div>
+      <!-- This last div belongs to the About/Contact region -->
     </div>
+    <!-- #endregion -->
 
 
+    <div class="space"></div>
 
-    <p class="hide" name="three" id="placeholder-p"></p>
-</div>
-<div class="space"></div>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
