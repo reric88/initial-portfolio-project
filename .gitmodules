@@ -1,17 +1,17 @@
 [submodule "path_to_submodule"] 
-  path = FullWebpageProject
+  path = ./../CSS/IntermediateCSS\FullWebpageProject
   url = https://github.com/reric88/FullWebsiteProject.git
 
 [submodule "path_to_submodule"] 
-  path = LePain
+  path = ./../Bootstrap/LePain
   url = https://github.com/reric88/lepain.git
 
 [submodule "path_to_submodule"] 
-  path = VideoBackgroundProject
+  path = ./..CSS/IntermediateCSS/VideoSite/VideoBackgroundProject
   url = https://github.com/reric88/VideoBackgroundProject.git
 
 [submodule "path_to_submodule"] 
-  path = WhatWeEatin
+  path = ./../WhatWeEatin
   url = https://github.com/reric88/wut-we-eatin.git
 
 # [submodule "path_to_submodule"] 
