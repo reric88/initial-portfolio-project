@@ -1,17 +1,17 @@
 [submodule "path_to_submodule"] 
-  path = Portfolio\FullWebpageProject
+  path = FullWebpageProject
   url = https://github.com/reric88/FullWebsiteProject.git
 
 [submodule "path_to_submodule"] 
-  path = Portfolio\LePain
+  path = LePain
   url = https://github.com/reric88/lepain.git
 
 [submodule "path_to_submodule"] 
-  path = Portfolio\VideoBackgroundProject
+  path = VideoBackgroundProject
   url = https://github.com/reric88/VideoBackgroundProject.git
 
 [submodule "path_to_submodule"] 
-  path = Portfolio\WhatWeEatin
+  path = WhatWeEatin
   url = https://github.com/reric88/wut-we-eatin.git
 
 # [submodule "path_to_submodule"] 
