@@ -478,8 +478,8 @@ textarea {
 .left-slide {
     height: 100%;
     width: 35%;
-    position: absolute;
-    top: -300%;
+    position: relative;
+    top: -400%;
     /* left: 0; */
     transition: transform 500ms ease;
     /* border:2px solid purple; */
@@ -561,21 +561,63 @@ button:focus {
     transform: translatey(-100%);
 }
 
+.vbgp {
+}
+
+
+
 .bg-video {
     background-color: #00101A;
+}
+.bg-video a{
+    color: #eee;
+}
+
+.bg-video .pSpan {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.bg-video span {
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.bg-video h1 {
+    display: block;
 }
 
 .bg-full-webpage {
     background-color: #2D2B3E;
 }
+.bg-full-webpage a{
+    color: #eee;
+}
 
 .bg-lepain {
     background-color: #1A1B1D;
+}
+.bg-lepain a{
+    color: #eee;
 }
 
 .bg-wheel {
     background-color: #1F180F;
 }
+.bg-wheel a{
+    color: #6e593d;
+}
+
+.bg-ZONK {
+    background-color: #050f05;    
+}
+
+.bg-ZONK a {
+    color: #8c8;
+}
+
+
+
 
 .video {
     background-image: url(./Images/bideoBackground.png);
@@ -592,6 +634,34 @@ button:focus {
 .wheel {
     background-image: url(./Images/wutWeEatin.png);
 }
+
+.ZONK {
+    background-image: url(./Images/ZONK.png);
+}
+
+
+
+.htmlTag {
+    color: rgb(119, 119, 119);
+}
+
+.letterTag {
+    color: rgb(46, 46, 255);
+}
+
+.letterTag2 {
+    color: rgb(63, 207, 243);
+}
+
+.letterTag3 {
+    color: rgb(187, 121, 67);
+}
+
+
+
+
+
+
 
 /* #endregion */
 
