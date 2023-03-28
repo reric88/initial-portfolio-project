@@ -1,0 +1,31 @@
+[submodule "path_to_submodule"] 
+  path = Portfolio\FullWebpageProject
+  url = https://github.com/reric88/FullWebsiteProject.git
+
+[submodule "path_to_submodule"] 
+  path = Portfolio\LePain
+  url = https://github.com/reric88/lepain.git
+
+[submodule "path_to_submodule"] 
+  path = Portfolio\VideoBackgroundProject
+  url = https://github.com/reric88/VideoBackgroundProject.git
+
+[submodule "path_to_submodule"] 
+  path = Portfolio\WhatWeEatin
+  url = https://github.com/reric88/wut-we-eatin.git
+
+# [submodule "path_to_submodule"] 
+#   path = path_to_submodule 
+#   url = git://url-of-source/
+
+# [submodule "path_to_submodule"] 
+#   path = path_to_submodule 
+#   url = git://url-of-source/
+
+# [submodule "path_to_submodule"] 
+#   path = path_to_submodule 
+#   url = git://url-of-source/
+
+# [submodule "path_to_submodule"] 
+#   path = path_to_submodule 
+#   url = git://url-of-source/
