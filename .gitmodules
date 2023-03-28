@@ -1,5 +1,5 @@
 [submodule "path_to_submodule"] 
-  path = ./../CSS/IntermediateCSS\FullWebpageProject
+  path = ./../CSS/IntermediateCSS/FullWebpageProject
   url = https://github.com/reric88/FullWebsiteProject.git
 
 [submodule "path_to_submodule"] 
