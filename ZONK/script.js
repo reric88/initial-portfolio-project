@@ -4,6 +4,7 @@ let lastRoom = 0;
 let prevRoom = currentRoom;
 let inventory = [];
 
+const outputDiv = document.getElementById("output");
 
 
 
@@ -50,56 +51,7 @@ function win() {
 
 
 
-north = document.getElementById("north").addEventListener("click", function() {
-  handleInput("north");
-});
 
-south = document.getElementById("south").addEventListener("click", function() {
-  handleInput("south");
-});
-
-east = document.getElementById("east").addEventListener("click", function() {
-  handleInput("east");
-});
-
-west = document.getElementById("west").addEventListener("click", function() {
-  handleInput("west");
-});
-
-lookb = document.getElementById("look").addEventListener("click", function() {
-  handleInput("look");
-});
-
-
-
-
-// let up = console.log(document.querySelectorAll(".control")[0].id)
-// let down = console.log(document.querySelectorAll(".control")[1].id)
-// let left = console.log(document.querySelectorAll(".control")[2].id)
-// let right = console.log(document.querySelectorAll(".control")[3].id)
-
-
-
-// #region Typing text stuff
-// let text = 0;
-// let speed = 15;
-// let textIndex = 0;
-// let outputDiv = document.getElementById("output");
-// let description = ''
-
-// function typingText(){
-//   for (i=0; i<=currentRoom.description.length; i++) {
-//       printRoomDescription().charAt(description);
-//       setTimeout(typingText, speed)
-//   }
-// }
-// function typingText(){
-//   for (i=0; i<=description.length; i++) {
-//     document.getElementById("output").innerHTML += description.charAt(i);
-//     setTimeout(typingText, speed)
-//   }
-//   }
-// #endregion
 
 
 
@@ -197,356 +149,281 @@ function printRoomDescription() {
       break;
   }
   console.log(description);
-  let outputDiv = document.getElementById("output");
+  
   outputDiv.innerHTML += "<p>" + description + "</p>";
   outputDiv.scrollTop = outputDiv.scrollHeight;
 }
 // #endregion
 
 
-function printLook() {
-  let look;
-  switch (currentRoom) {
-    case 1:
-      look = 'You are surrounded by trees on all sides. Birds and squirrels are flitting about in the treetops, chirping and chittering without a care in the world. The leaves rustle in the wind and you get a strong wiff of pine needles, damp leaves and dirt. There is a clear path to the <span>north</span> and you can make out a building in the distance. There is also an overgrown path to the <span>east</span>, leading deeper into the forest.'
-      break;
-    case 2:
-      look = 'You see a large shack ahead; the door is slightly ajar and you can hear some slow shuffling and scraping on wood coming from inside. Could it be someone who can help you, or could it be your assailant? As you ponder this, a dark silhouette passes across the gap between the door and the doorframe. A dense line of trees are to the east and to the west. There is a path to the <span>south</span> leading deeper into the forest and a path to the <span>north</span> leading into the shack.'
-      break;
-    case 3:
-      look = 'The canopy blocks most of the light here and you can barely see past the wall of brush and brambles around you. The forest floor is covered in a thick layer of leaves and sticks; the overgrowth is suffocating. You can barely make out a narrow track of dirt on the ground leading <span>west</span>, as well as to the <span>north</span> and to the <span>south</span>. There is a hollowed out tree to the <span>east</span>. There seems to be a small white box lying on the ground there.'
-      break;
-    case 4:
-      look = 'You can see some sunlight coming through the tops of the trees. There is a brook nearby and the light is glinting off the water with a quiet briliance. You wouldn\'t really mind staying here forever and you consider the option. After a few moments you snap out of your thoughts and rub your eyes. This place is bewitching and must hold some dark magic as it would be insane to stop here considering you can see what appears to be a bears den to the <span>west</span>. However, you are very thirsty... There is a path to the <span>south</span> through a dense wall of brambles and a path leading <span>north</span> alongside the brook. There is a impassable cliff wall to the east.'
-      break;
-    case 5:
-      look = 'There is a hill to the south which is much to steep to climb. The gentle sound of nature here soothes you and the forest seems to be getting thinner. A refreshing breeze blows across your face and through your disheveled hair. A brook winds down the hill in a zig-zag, babbling over a bed of stones and pebbles before entering spring. There are a few fish darting about beneath the surface of the spring, that water is clear enough you can see to the bottom. There is an impassable cliff wall to the east and a steep drop to the north. A well-worn path leads from the spring to the <span>west</span>.'
-      break;
-    case 6:
-      look = 'The trees sparsely line the side of the path, their trunks and limbs creating a natural archway. The forest floor is carpeted with a thin layer of fallen leaves and twigs, and shafts of sunlight filter through the branches overhead. The powerful aroma of pine needles and damp earth fills the air around you. There is a clear path leading <span>west</span> and through the archway you can see a manor in the distance. The path extends into the <span>east</span>, leading deeper into the forest. The edge of a cliff lies to the north and a thicket of trees to the south.';
-      break;
-    case 7:
-      description = 'The manor is very old and falling apart. Boards hang from the walls at different angles, barely holding on by nails that are nearly rusted away. The rafters and purlins above the porch are bowed down as if a giant were resting on the roof. The balusters have nearly fallen away and the handrail is supported by the few remaining. There is a door to the <span>south</span> leading into the manor, and an open doorway on the porch to the <span>west</span> also leading inside. There is a path with few pieces of gravel embedded in the dirt leading to the east into a forest.';
-      look = ''
-      break;
-    case 8:
-      description = 'The foyer is littered with broken items and covered in a thick later of dust. Taking a closer look at the items laying about the floor, you can see what appears to be a rapier sticking halfway out of the floorboards. It would be useful to have a weapon, but you aren\'t sure if it would be wise to retrieve it not knowing who the owner is, or why it is stuck into the floor. There is an open doorway to the <span>north</span> and a staircase to the <span>south</span>.';
-      look = ''
-      break;
-    case 9:
-      description = 'R9';
-      look = ''
-      break;
-    case 10:
-      description = 'R10';
-      look = ''
-      break;
-    case 11:
-      description = 'R11';
-      look = ''
-      break;
-    case 12:
-      description = 'R12';
-      look = ''
-      break;
-    case 13:
-      description = 'R13';
-      look = ''
-      break;
-    case 14:
-      description = 'R14';
-      look = ''
-      break;
-    case 15:
-      description = 'R15';
-      look = ''
-      break;
-  }
-  let outputDiv = document.getElementById("output");
-  outputDiv.innerHTML += "<p>" + look + "</p>";
-  outputDiv.scrollTop = outputDiv.scrollHeight;
+const roomDescription = {
+    1: 'You are surrounded by trees on all sides. Birds and squirrels are flitting about in the treetops, chirping and chittering without a care in the world. The leaves rustle in the wind and you get a strong wiff of pine needles, damp leaves and dirt. There is a clear path to the <span>north</span> and you can make out a building in the distance. There is also an overgrown path to the <span>east</span>, leading deeper into the forest.',
+
+    2: 'You see a large shack ahead; the door is slightly ajar and you can hear some slow shuffling and scraping on wood coming from inside. Could it be someone who can help you, or could it be your assailant? As you ponder this, a dark silhouette passes across the gap between the door and the doorframe. A dense line of trees are to the east and to the west. There is a path to the <span>south</span> leading deeper into the forest and a path to the <span>north</span> leading into the shack.',
+    
+    3: 'The canopy blocks most of the light here and you can barely see past the wall of brush and brambles around you. The forest floor is covered in a thick layer of leaves and sticks; the overgrowth is suffocating. You can barely make out a narrow track of dirt on the ground leading <span>west</span>, as well as to the <span>north</span> and to the <span>south</span>. There is a hollowed out tree to the <span>east</span>. There seems to be a small white box lying on the ground there.',
+    
+    4: 'You can see some sunlight coming through the tops of the trees. There is a brook nearby and the light is glinting off the water with a quiet briliance. You wouldn\'t really mind staying here forever and you consider the option. After a few moments you snap out of your thoughts and rub your eyes. This place is bewitching and must hold some dark magic as it would be insane to stop here considering you can see what appears to be a bears den to the <span>west</span>. However, you are very thirsty... There is a path to the <span>south</span> through a dense wall of brambles and a path leading <span>north</span> alongside the brook. There is a impassable cliff wall to the east.',
+   
+    5: 'There is a hill to the south which is much to steep to climb. The gentle sound of nature here soothes you and the forest seems to be getting thinner. A refreshing breeze blows across your face and through your disheveled hair. A brook winds down the hill in a zig-zag, babbling over a bed of stones and pebbles before entering spring. There are a few fish darting about beneath the surface of the spring, that water is clear enough you can see to the bottom. There is an impassable cliff wall to the east and a steep drop to the north. A well-worn path leads from the spring to the <span>west</span>.',
+    
+    6: 'The trees sparsely line the side of the path, their trunks and limbs creating a natural archway. The forest floor is carpeted with a thin layer of fallen leaves and twigs, and shafts of sunlight filter through the branches overhead. The powerful aroma of pine needles and damp earth fills the air around you. There is a clear path leading <span>west</span> and through the archway you can see a manor in the distance. The path extends into the <span>east</span>, leading deeper into the forest. The edge of a cliff lies to the north and a thicket of trees to the south.',
+   
+    7: 'The manor is very old and falling apart. Boards hang from the walls at different angles, barely holding on by nails that are nearly rusted away. The rafters and purlins above the porch are bowed down as if a giant were resting on the roof. The balusters have nearly fallen away and the handrail is supported by the few remaining. There is a door to the <span>south</span> leading into the manor, and an open doorway on the porch to the <span>west</span> also leading inside. There is a path with few pieces of gravel embedded in the dirt leading to the east into a forest.',
+    
+    8: 'The foyer is littered with broken items and covered in a thick later of dust. Taking a closer look at the items laying about the floor, you can see what appears to be a rapier sticking halfway out of the floorboards. It would be useful to have a weapon, but you aren\'t sure if it would be wise to retrieve it not knowing who the owner is, or why it is stuck into the floor. There is an open doorway to the <span>north</span> and a staircase to the <span>south</span>.',
+   
+    9: 'No description yet.',
+    
+    10: 'No description yet.',
+    
+    11: 'No description yet.',
+    
+    12: 'No description yet.',
+    
+    13: 'No description yet.',
+    
+    14: 'No description yet.',
+    
+    15: 'No description yet.',
+    
+    16: 'No description yet.',
+   
+    17: 'No description yet.',
+
 }
 
-
-
-
-function deadEnd() {
-    let outputDiv = document.getElementById("output");
-    outputDiv.innerHTML += "<p>" + "You can't go that way." + "</p>";
+function printLook() {
+    const description = roomDescription[currentRoom];
+    
+    outputDiv.innerHTML += "<p>" + description + "</p>";
     outputDiv.scrollTop = outputDiv.scrollHeight;
 }
 
 
 
 
+const itemList = {
+    1: 'No item yet.',
+    2: 'No item yet.',
+    3: 'No item yet.',
+    4: 'No item yet.',
+    5: 'No item yet.',
+    6: 'No item yet.',
+    7: 'No item yet.',
+    8: 'No item yet.',
+    9: 'No item yet.',
+    10: 'No item yet.',
+    11: 'No item yet.',
+    12: 'No item yet.',
+    13: 'No item yet.',
+    14: 'No item yet.',
+    15: 'No item yet.',
+    16: 'No item yet.',
+    17: 'No item yet.',
+    18: 'No item yet.',
+    19: 'No item yet.',
+    20: 'No item yet.',
+    21: 'No item yet.',
+}
 
+function takeItem() {
+
+    const roomItem = itemList[currentRoom];
+
+    if (roomItem === undefined) {
+        outputDiv.innerHTML += "<p>" + 'There is nothing worth taking.' + "</p>";
+    outputDiv.scrollTop = outputDiv.scrollHeight;
+    return;
+    } 
+
+    if (inventory.includes(roomItem)) {
+        outputDiv.innerHTML += "<p>" + 'You have already searched this room.' + "</p>";
+    outputDiv.scrollTop = outputDiv.scrollHeight;
+    return;
+    }
+
+    inventory.push(roomItem);
+    itemList[currentRoom] = undefined;
+
+    
+console.log(itemList);
+
+delete itemList[5];
+
+if (itemList[currentRoom] != undefined) {
+    let items = itemList[currentRoom];
+    inventory.push(items);
+    delete items;
+    items = undefined;
+    outputDiv.innerHTML += "<p>" + 'You picked up a ' + items + "</p>";
+    outputDiv.scrollTop = outputDiv.scrollHeight;
+} else (itemList[currentRoom] = undefined)
+    console.log(itemList);
+    console.log(inventory);
+}
 // #region Controls
 
 // DIRECTIONS
+
+
+
 function handleInput(input) {
-  // input = document.getElementById("input").value.toLowerCase()
-  // if (lastRoom !== currentRoom){
- 
-  // }
-  
-  // console.log(currentRoom, lastRoom, 'After function start');
-  // // if (currentRoom !== lastRoom) {
-  //   lastRoom = currentRoom;
-  //   // }
-  //   console.log(currentRoom, lastRoom, 'After lastRoom = currentRoom start');
+
+    const roomTransitions = {
+        1: {
+            north: 2,
+            east: 3,
+            look: 'look',
+            take: 'take',
+        },
+    
+        2: {
+            north: 16,
+            south: 1,
+            look: 'look',
+            take: 'take',
+        },
+       
+        3: {
+            north: 4,
+            south: 12,
+            east: 16,
+            west: 1,
+            look: 'look',
+            take: 'take',
+        },
+       
+        4: {
+            north: 5,
+            south: 3,
+            west: 16,
+            look: 'look',
+            take: 'take',
+        },
+       
+        5: {
+            west: 6,
+            look: 'look',
+            take: 'take',
+            
+        },
+    
+        6: {
+            east: 5,
+            west: 7,
+            south: 16,
+            look: 'look',
+            take: 'take',
+        },
+    
+        7: {
+            east: 6,
+            west: 16,
+            south: 8,
+            look: 'look',
+            take: 'take',
+        },
+    
+        8: {
+            north: 7,
+            south: 9,
+            look: 'look',
+            take: 'take',
+        },
+       
+        9: {
+            north: 8,
+            south: 10,
+            west: 14,
+            look: 'look',
+            take: 'take',
+        },
+       
+        10: {
+            north: 9,
+            west: 13,
+            east: 11,
+            look: 'look',
+            take: 'take',
+        },
+    
+        11: {
+            west: 10,
+            east: 12,
+            south: 16,
+            look: 'look',
+            take: 'take',
+        },
+    
+        12: {
+            east: 16,
+            west: 11,
+            look: 'look',
+            take: 'take',
+        },
+    
+        13: {
+            west: 15,
+            look: 'look',
+            take: 'take',
+        },
+    
+        14: {
+            east: 9,
+            look: 'look',
+            take: 'take',
+        },
+       
+        15: {
+            north: 'win',
+            south: 'win',
+            west: 'win',
+            look: 'look',
+            take: 'take',
+        }
+      };
+      
+      const transition = roomTransitions[currentRoom]?.[input];
+      if (transition === 'look') {
+        printLook();
+      } else if (transition === 'take') {
+        takeItem();
+      } else
+      if (transition === undefined) {
+        deadEnd();
+      } else if (transition === 'win') {
+        alert('You Win!');
+        win();
+      } else {
+        lastRoom = currentRoom;
+        currentRoom = transition;
+        printRoomDescription();
+        if (currentRoom === 16) {
+          died();
+        }
+      }
+    
 
 
   switch (input) {
-    
- // NORTH
-    case "north":
-      if (currentRoom === 1) {
-        lastRoom = currentRoom;
-        currentRoom = 2;
-        printRoomDescription();
-      } else if (currentRoom === 2){
-    lastRoom = currentRoom;
-        currentRoom = 16;
-        printRoomDescription();
-        died();
-      } else if (currentRoom === 3) {
-    lastRoom = currentRoom;
-        currentRoom = 4;
-        printRoomDescription();
-      } else if (currentRoom === 4) {
-    lastRoom = currentRoom;
-        currentRoom = 5;
-        printRoomDescription();
-      } else if (currentRoom === 8) {
-    lastRoom = currentRoom;
-        currentRoom = 7;
-        printRoomDescription();
-      } else if (currentRoom === 9) {
-    lastRoom = currentRoom;
-        currentRoom = 8;
-        printRoomDescription();
-      } else if (currentRoom === 10) {
-    lastRoom = currentRoom;
-        currentRoom = 9
-        printRoomDescription();;
-      } else if (currentRoom === 15) {
-    lastRoom = currentRoom;
-        alert('You Win!');
-        win();
-      } else
-      {
-        deadEnd();
-      }
-      break;
-
- // SOUTH
-      case "south":
-      if (currentRoom === 2) {
-        lastRoom = currentRoom;
-        currentRoom = 1;
-        printRoomDescription();
-      } else if (currentRoom === 3) {
-    lastRoom = currentRoom;
-        currentRoom = 12;
-        printRoomDescription();
-      } else if (currentRoom === 4) {
-    lastRoom = currentRoom;
-        currentRoom = 3;
-        printRoomDescription();
-      } else if (currentRoom === 5) {
-    lastRoom = currentRoom;
-        currentRoom = 4;
-        printRoomDescription();
-      } else if (currentRoom === 7) {
-    lastRoom = currentRoom;
-        currentRoom = 8;
-        printRoomDescription();
-      } else if (currentRoom === 8) {
-    lastRoom = currentRoom;
-        currentRoom = 9;
-        printRoomDescription();
-      } else if (currentRoom === 9) {
-    lastRoom = currentRoom;
-        currentRoom = 10;
-        printRoomDescription();
-      } else if (currentRoom === 11) {
-    lastRoom = currentRoom;
-        alert('GAME OVER');
-        died();
-      } else if (currentRoom === 15) {
-    lastRoom = currentRoom;
-        alert('You win!')
-        win();
-      } else
-      {   deadEnd();
-      }
-      // console.log(currentRoom);
-      break;
-      
- // EAST      
-      case "east":
-      if (currentRoom === 1) {
-    lastRoom = currentRoom;
-        currentRoom = 3;
-        printRoomDescription();
-      } else if (currentRoom === 3) {
-    lastRoom = currentRoom;
-        alert('GAME OVER');
-        died();
-      } else if (currentRoom ===6) {
-    lastRoom = currentRoom;
-        currentRoom = 5;
-        printRoomDescription();
-      }  else if (currentRoom ===7) {
-    lastRoom = currentRoom;
-        currentRoom = 6;
-        printRoomDescription();
-      }  else if (currentRoom ===10) {
-    lastRoom = currentRoom;
-        currentRoom = 11;
-        printRoomDescription();
-      }  else if (currentRoom ===11) {
-    lastRoom = currentRoom;
-        currentRoom = 12;
-        printRoomDescription();
-      }  else if (currentRoom ===12) {
-    lastRoom = currentRoom;
-        alert('GAME OVER');
-        died();
-      }  else if (currentRoom ===14) {
-    lastRoom = currentRoom;
-        currentRoom = 19;
-        printRoomDescription();
-      } else
-      {
-        deadEnd();
-      }
-      // console.log(currentRoom);
-      break;
-      
- // WEST      
-      case "west":
-      if (currentRoom === 3) {
-    lastRoom = currentRoom;
-        currentRoom = 1;
-        printRoomDescription();
-      }  else if (currentRoom ===5) {
-    lastRoom = currentRoom;
-        currentRoom = 6;
-        printRoomDescription();
-      }  else if (currentRoom ===6) {
-    lastRoom = currentRoom;
-        currentRoom = 7;
-        printRoomDescription();
-      }  else if (currentRoom ===7) {
-    lastRoom = currentRoom;
-        alert('GAME OVER');
-        died();
-      }  else if (currentRoom ===9) {
-    lastRoom = currentRoom;
-        currentRoom = 14;
-        printRoomDescription();
-      }  else if (currentRoom ===10) {
-    lastRoom = currentRoom;
-        currentRoom = 13;
-        printRoomDescription();
-      }  else if (currentRoom ===11) {
-    lastRoom = currentRoom;
-        currentRoom = 10;
-        printRoomDescription();
-      }  else if (currentRoom ===12) {
-    lastRoom = currentRoom;
-        currentRoom = 11;
-        printRoomDescription();
-      }  else if (currentRoom ===13) {
-    lastRoom = currentRoom;
-        currentRoom = 15;
-        printRoomDescription();
-      }  else if (currentRoom ===15) {
-    lastRoom = currentRoom;
-        alert('YOU WIN!');
-        win();
-      } else
-      {
-        deadEnd();
-      }
-
-      break;
-
- // LOOK
-      case "look":
-        if (currentRoom === 1){
-        printLook();
-
-        } else if (currentRoom === 2) {
-        printLook();
-          
-        } else if (currentRoom === 3) {
-        printLook();
-          
-        } else if (currentRoom === 4) {
-        printLook();
-          
-        } else if (currentRoom === 5) {
-        printLook();
-          
-        } else if (currentRoom === 6) {
-        printLook();
-          
-        } else if (currentRoom === 7) {
-        printLook();
-          
-        } else if (currentRoom === 8) {
-        printLook();
-          
-        } else if (currentRoom === 9) {
-        printLook();
-          
-        } else if (currentRoom === 10) {
-        printLook();
-          
-        } else if (currentRoom === 11) {
-        printLook();
-          
-        } else if (currentRoom === 12) {
-        printLook();
-          
-        } else if (currentRoom === 13) {
-        printLook();
-          
-        } else if (currentRoom === 14) {
-        printLook();
-          
-        } else if (currentRoom === 15) {
-        printLook();
-          
-        } else {
-          console.log("error");
-        }
-        break;
-    // add more cases for each direction
-    
-    
-
-
-
+ 
  // ITEMS
-    case "pick up key":
-      if (currentRoom === 2) {
-        inventory.push("key");
-        console.log("You picked up a key.");
-        let outputDiv = document.getElementById("output");
-        outputDiv.innerHTML += "<p>" + "You picked up a key." + "</p>";
-        outputDiv.scrollTop = outputDiv.scrollHeight;
-      } else {
-        console.log("There's nothing to pick up here.");
-        let outputDiv = document.getElementById("output");
-        outputDiv.innerHTML +=
-          "<p>" + "There's nothing to pick up here." + "</p>";
-        outputDiv.scrollTop = outputDiv.scrollHeight;
-      }
-      break;
-    // add more cases for each item that can be picked up
+    // case "pick up key":
+    //   if (currentRoom === 2) {
+    //     inventory.push("key");
+    //     console.log("You picked up a key.");
+    //     
+    //     outputDiv.innerHTML += "<p>" + "You picked up a key." + "</p>";
+    //     outputDiv.scrollTop = outputDiv.scrollHeight;
+    //   } else {
+    //     console.log("There's nothing to pick up here.");
+    //     
+    //     outputDiv.innerHTML +=
+    //       "<p>" + "There's nothing to pick up here." + "</p>";
+    //     outputDiv.scrollTop = outputDiv.scrollHeight;
+    //   }
+    //   break;
 
     
 
@@ -555,7 +432,7 @@ function handleInput(input) {
  // DONT UNDERSTAND COMMAND
     default:
       console.log("I don't understand that command.");
-      let outputDiv = document.getElementById("output");
+      
       outputDiv.innerHTML +=
       "<p>" + "I don't understand that command." + "</p>";
       outputDiv.scrollTop = outputDiv.scrollHeight;
@@ -568,29 +445,54 @@ function handleInput(input) {
   document.getElementById("input").value = "";
   
   
-  // console.log(currentRoom, lastRoom, 'Before lastRoom = currentRoom end');
-  // if (currentRoom !== lastRoom) {
-  //   lastRoom = currentRoom;
-  // }
+
   console.log(currentRoom, lastRoom, 'Before function end');
+}
+
+function deadEnd() {
+    
+    outputDiv.innerHTML += "<p>" + "You can't go that way." + "</p>";
+    outputDiv.scrollTop = outputDiv.scrollHeight;
 }
 
 // #endregion
 
+document.getElementById("north").addEventListener("click", function() {
+    handleInput("north");
+  });
+  
+  document.getElementById("south").addEventListener("click", function() {
+    handleInput("south");
+  });
+  
+  document.getElementById("east").addEventListener("click", function() {
+    handleInput("east");
+  });
+  
+  document.getElementById("west").addEventListener("click", function() {
+    handleInput("west");
+  });
+  
+  document.getElementById("look").addEventListener("click", function() {
+    handleInput("look");
+  });
 
+  document.getElementById("take").addEventListener("click", function() {
+    handleInput("take");
+  });
 
 
 document.getElementById("submit").addEventListener("click", function() {
   handleInput(document.getElementById("input").value.toLowerCase());
 });
 // SUBMIT BUTTON
-// document.getElementById("submit").addEventListener("click", handleInput);
+document.getElementById("submit").addEventListener("click", handleInput);
 
-// document.getElementById("input").addEventListener("keydown", function (event) {
-//   if (event.key === "Enter") {
-//     handleInput();
-//   }
-// });
+document.getElementById("input").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    handleInput();
+  }
+});
 
 // #region print users input
 function printUserInput(input) {
@@ -602,37 +504,6 @@ function printUserInput(input) {
 }
 // #endregion
 
-// #region more typing text
-
-// let text = '';
-// let speed = 15;
-// index = 0;
-// function typingText() {
-//     if (textIndex < text.length) {
-//       document.getElementById('pStuff').innerHTML += text.charAt(index);
-//       index ++;
-//       setTimeout(typingText, speed);
-//     }
-//     if (index >= text.length) {
-
-//     }
-//   }
-// function typingText() {
-//     if (textIndex < text.length) {
-//       // document.getElementById('pStuff').innerHTML += text.charAt(index);
-//       outputDiv.innerHTML += "<p>" + "I don't understand that command." + "</p>"
-//       textIndex ++;
-//       setTimeout(typingText, speed);
-//     }
-//   }
-
-// function typingText(){
-//   for (i=0; i<=description.length; i++) {
-//       printRoomDescription().charAt(description);
-//       setTimeout(typingText, speed)
-//   }
-// }
-// #endregion
 
 // #region Starting the game
 function startGame() {
@@ -668,82 +539,6 @@ function hideBtn() {
 }
 // #endregion
 
-// up = document.getElementById('up');
-// down = document.getElementById('down');
-// left = document.getElementById('left');
-// right = document.getElementById('right');
-
-
-
-
-// let whichBtn = '';
-// function directionalBtn() {
-//   if (document.getElementById('up') == 'up'){
-    
-//   }
-// }
-// document.getElementById("up").addEventListener("click", handleInput)
-
-
-
-// document.getElementById("control").addEventListener('click', () => {
-// })
-
-
-
-
-
-
-
-
-// const btns = document.querySelectorAll('.control');
-
-// buttons = document.querySelectorAll(input);
-
-//   buttons.addEventListener('click', () => {
-//     if (document.getElementById('up').click) {
-//       console.log('NORTH');
-//     }
-//     if (document.getElementById('down').click) {
-//       console.log('SOUTH');
-//     }
-//     if (document.getElementById('left')) {
-//       console.log('SOUTH');
-//     }
-//     if (document.getElementById('right')) {
-//       console.log('SOUTH');
-//     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // console.log('NORTH');
-      // links.forEach((link) => {
-      // link.className = 'navbar-link';
-      // });
-      // link.classList.add('change');
-
-  // });
-
-
-
-// const btn = document.getElementById('up');
-// if (btn.classList.contains('active')) {
-//   console.log('Button Active');
-// }
-
-
-
-// const north = ['1', '8', 'north', 'up', '',]
-// const south = ['', '', '', '', '',]
-// const east = ['', '', '', '', '',]
-// const west = ['', '', '', '', '',]
 
 
 
@@ -753,3 +548,74 @@ function hideBtn() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #region Working Navbar Code
+// const qall = document.querySelectorAll('.navbar-link')
+// const jall = document.querySelectorAll('.sub-link')
+
+// document.addEventListener('click', function (e) {
+//     var target = e.target;
+//     var parent = target.parentNode;
+//     var index = [].indexOf.call(parent.children, target);
+//     console.log("index:", index);
+//     console.log(target);
+//     console.log(parent.children);
+
+//         qall.forEach((link) => {
+//             link.classList.add('hide')
+//             link.classList.remove('show')
+
+//         })
+
+//         jall.forEach((link) => {
+//             link.classList.add('hide')
+//             link.classList.remove('show')
+//         })
+//         for (i=0; i<=index; i++) {
+//             console.log(jall[index]);
+//             jall[index].classList.add('show')
+//             jall[index].classList.remove('hide')
+            
+//         }
+//             target.classList.remove('hide')
+//         target.classList.add('show');
+
+//   });
+// #endregion
