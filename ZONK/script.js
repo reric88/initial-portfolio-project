@@ -1,5 +1,7 @@
 // Define variables for the game
 let currentRoom = 1;
+let lastRoom = 0;
+let prevRoom = currentRoom;
 let inventory = [];
 
 
@@ -26,10 +28,11 @@ function died() {
   let startBtn = document.querySelector('#s-btn');
   let reloadBtn = document.querySelector('#r-btn');
   let outputDiv = document.getElementById('output');
+  alert('You have died.')
+  outputDiv.innerHTML = ''
   currentRoom = 1;
   startBtn.className = 'play-btn';
   reloadBtn.className = 'hide-btn';
-  outputDiv.innerHTML = ''
 }
 
 function win() {
@@ -282,147 +285,192 @@ function deadEnd() {
 // DIRECTIONS
 function handleInput(input) {
   // input = document.getElementById("input").value.toLowerCase()
+  // if (lastRoom !== currentRoom){
+ 
+  // }
+  
+  // console.log(currentRoom, lastRoom, 'After function start');
+  // // if (currentRoom !== lastRoom) {
+  //   lastRoom = currentRoom;
+  //   // }
+  //   console.log(currentRoom, lastRoom, 'After lastRoom = currentRoom start');
+
+
   switch (input) {
     
  // NORTH
     case "north":
       if (currentRoom === 1) {
+        lastRoom = currentRoom;
         currentRoom = 2;
         printRoomDescription();
       } else if (currentRoom === 2){
+    lastRoom = currentRoom;
         currentRoom = 16;
         printRoomDescription();
-        // died();
+        died();
       } else if (currentRoom === 3) {
+    lastRoom = currentRoom;
         currentRoom = 4;
         printRoomDescription();
       } else if (currentRoom === 4) {
+    lastRoom = currentRoom;
         currentRoom = 5;
         printRoomDescription();
       } else if (currentRoom === 8) {
+    lastRoom = currentRoom;
         currentRoom = 7;
         printRoomDescription();
       } else if (currentRoom === 9) {
+    lastRoom = currentRoom;
         currentRoom = 8;
         printRoomDescription();
       } else if (currentRoom === 10) {
+    lastRoom = currentRoom;
         currentRoom = 9
         printRoomDescription();;
       } else if (currentRoom === 15) {
+    lastRoom = currentRoom;
         alert('You Win!');
         win();
       } else
       {
         deadEnd();
       }
-      console.log(currentRoom);
       break;
 
  // SOUTH
       case "south":
       if (currentRoom === 2) {
+        lastRoom = currentRoom;
         currentRoom = 1;
         printRoomDescription();
       } else if (currentRoom === 3) {
+    lastRoom = currentRoom;
         currentRoom = 12;
         printRoomDescription();
       } else if (currentRoom === 4) {
+    lastRoom = currentRoom;
         currentRoom = 3;
         printRoomDescription();
       } else if (currentRoom === 5) {
+    lastRoom = currentRoom;
         currentRoom = 4;
         printRoomDescription();
       } else if (currentRoom === 7) {
+    lastRoom = currentRoom;
         currentRoom = 8;
         printRoomDescription();
       } else if (currentRoom === 8) {
+    lastRoom = currentRoom;
         currentRoom = 9;
         printRoomDescription();
       } else if (currentRoom === 9) {
+    lastRoom = currentRoom;
         currentRoom = 10;
         printRoomDescription();
       } else if (currentRoom === 11) {
+    lastRoom = currentRoom;
         alert('GAME OVER');
         died();
       } else if (currentRoom === 15) {
+    lastRoom = currentRoom;
         alert('You win!')
         win();
       } else
       {   deadEnd();
       }
-      console.log(currentRoom);
+      // console.log(currentRoom);
       break;
       
  // EAST      
       case "east":
       if (currentRoom === 1) {
+    lastRoom = currentRoom;
         currentRoom = 3;
         printRoomDescription();
       } else if (currentRoom === 3) {
+    lastRoom = currentRoom;
         alert('GAME OVER');
         died();
       } else if (currentRoom ===6) {
+    lastRoom = currentRoom;
         currentRoom = 5;
         printRoomDescription();
       }  else if (currentRoom ===7) {
+    lastRoom = currentRoom;
         currentRoom = 6;
         printRoomDescription();
       }  else if (currentRoom ===10) {
+    lastRoom = currentRoom;
         currentRoom = 11;
         printRoomDescription();
       }  else if (currentRoom ===11) {
+    lastRoom = currentRoom;
         currentRoom = 12;
         printRoomDescription();
       }  else if (currentRoom ===12) {
+    lastRoom = currentRoom;
         alert('GAME OVER');
         died();
       }  else if (currentRoom ===14) {
+    lastRoom = currentRoom;
         currentRoom = 19;
         printRoomDescription();
       } else
       {
         deadEnd();
       }
-      console.log(currentRoom);
+      // console.log(currentRoom);
       break;
       
  // WEST      
       case "west":
       if (currentRoom === 3) {
+    lastRoom = currentRoom;
         currentRoom = 1;
         printRoomDescription();
       }  else if (currentRoom ===5) {
+    lastRoom = currentRoom;
         currentRoom = 6;
         printRoomDescription();
       }  else if (currentRoom ===6) {
+    lastRoom = currentRoom;
         currentRoom = 7;
         printRoomDescription();
       }  else if (currentRoom ===7) {
+    lastRoom = currentRoom;
         alert('GAME OVER');
         died();
       }  else if (currentRoom ===9) {
+    lastRoom = currentRoom;
         currentRoom = 14;
         printRoomDescription();
       }  else if (currentRoom ===10) {
+    lastRoom = currentRoom;
         currentRoom = 13;
         printRoomDescription();
       }  else if (currentRoom ===11) {
+    lastRoom = currentRoom;
         currentRoom = 10;
         printRoomDescription();
       }  else if (currentRoom ===12) {
+    lastRoom = currentRoom;
         currentRoom = 11;
         printRoomDescription();
       }  else if (currentRoom ===13) {
+    lastRoom = currentRoom;
         currentRoom = 15;
         printRoomDescription();
       }  else if (currentRoom ===15) {
+    lastRoom = currentRoom;
         alert('YOU WIN!');
         win();
       } else
       {
         deadEnd();
       }
-      console.log(currentRoom);
+
       break;
 
  // LOOK
@@ -518,6 +566,13 @@ function handleInput(input) {
 
 
   document.getElementById("input").value = "";
+  
+  
+  // console.log(currentRoom, lastRoom, 'Before lastRoom = currentRoom end');
+  // if (currentRoom !== lastRoom) {
+  //   lastRoom = currentRoom;
+  // }
+  console.log(currentRoom, lastRoom, 'Before function end');
 }
 
 // #endregion

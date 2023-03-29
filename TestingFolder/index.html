@@ -9,10 +9,281 @@
    <meta name="author" content="Eric Collard">
     <link rel="stylesheet" href="styles.css">
    <title>description</title>
-</head>
-<body>
+   <style>
 
-<div class="one" id="one">
+      * {
+         
+         font-family: 'Courier New', Courier, monospace;
+      }
+      
+      *::-webkit-scrollbar {
+         background-color: #8c89;
+         border: 3px solid #aca9;
+      }
+      
+      *::-webkit-scrollbar-thumb {
+         background-color: #aca9;
+      }
+      
+      
+      body {
+         background-color: #0d180d; 
+         height: 100vh; 
+         width: 100vw;
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items: center;
+         color: #aca;
+         font-size: 1.5rem;
+         /* overflow: hidden; */
+      }
+      
+      .start-btn-box {
+         height:15%; 
+         width:100%; 
+         display: flex; 
+         justify-content: center; 
+         align-items: flex-start;
+      }
+      
+            .play-btn {
+               width:10rem; 
+               height: 4rem; 
+               margin: 2rem;
+               border: 5px solid #aca9; 
+               border-radius: 5px; 
+               background-color: #8c89; 
+               color: #acac; 
+               font-weight: 700; 
+               font-size: 1.7rem;
+               text-align: center;
+            }
+            
+            .play-btn:hover {
+               transform: scale(.97);
+               background-color: #8c88;
+               color: #acab; 
+            }
+      
+            .play-btn:active {
+               transform: scale(.9);
+               background-color: #8c87;
+               color: #acaa; 
+            }
+      
+               .hide-btn {
+                  display: none;
+               }
+      
+               .show-btn {
+                  display: block;
+            }
+      
+      .p-div {
+         height: 90%;
+         width: 50%;
+         display: flex;
+         justify-content: center;
+         align-items: flex-start;
+      }
+      
+      #output {
+         height: 25rem;
+         width: 95%;
+         padding: 0 2rem;
+         overflow-y: scroll;
+         text-align: center;
+         border: 2px solid #acac;
+         border-radius: 15px;
+         background-color: #00000060;
+         font-size: 2rem;
+         font-weight: 500;
+      }
+      
+      #output::-webkit-scrollbar {
+         background-color: #8c89;
+         border-radius: 0 10px 10px 0;
+         border: 3px solid #aca9;
+      }
+      
+      #output::-webkit-scrollbar-thumb {
+         background-color: #aca9;
+         border-radius: 10px;
+      }
+      
+      #input-container {
+      }
+      
+      #input {
+         width: 15rem;
+         height: 2rem;
+         background-color: #8c89;
+         border: 3px solid #aca9;
+         border-radius: 5px;
+         font-size: 1.5rem;
+      }
+      
+      #submit {
+         width: 5rem;
+         height: 3rem;
+         color: #aca;
+         background-color: #8c89;
+         border: 3px solid #aca9;
+         border-radius: 5px;
+         display: block;
+         margin: 1rem;
+         font-size: 1.2rem;
+         font-weight: 600;
+         padding-right: 75px;
+      }
+      
+      #north {
+         translate: 0 -5rem;
+      }
+      
+      #south {
+         translate: 0 5rem;
+      }
+      
+      #west {
+         translate: -5rem 0;
+      }
+      
+      #east {
+         translate: 5rem 0;
+      }
+      
+      #take {
+         translate: 5rem 5rem;
+      }
+      
+      
+      
+      
+            #pStuff {
+               color: #eee;
+            }
+      
+            .controls-div {
+               position: relative;
+               bottom: 0;
+               height: 12rem;
+               width: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: flex-end;
+            }
+      
+            .control {
+               height: 4rem;
+               width: 4rem;
+               position: absolute;
+               border: 3px solid #aca9;
+               background-color: #8c87;
+               color: #acac;
+               border-radius: 5px;
+               font-size: 1rem;
+               font-weight: 600;
+      
+            }
+      
+            @media (width > 800px) {
+               /* body {
+               background-color: green;
+            } */
+      
+            #output {
+               width: 50%;
+               height: 40rem;
+            }
+      
+            .controls-div {
+               position: absolute;
+               width: 12rem;
+               right: 8rem;
+               bottom: 8rem;
+               margin-bottom: 4rem;
+               justify-content: flex-end;
+               margin-right: 5rem;
+            }
+      
+            .input-container {
+               position: absolute;
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               bottom: 0;
+               margin-bottom: 0rem;
+            }
+      
+            span {
+               color: red;
+            }
+            
+         }
+      
+         /* @media (width < 500) {
+            body {
+               background-color: aqua;
+            }
+            #output {
+               background-color: red;
+               height: 10rem;
+            }
+            .controls-div {
+               background-color: #7a7;
+            }
+         } */
+         </style>
+      </head>
+      <body>
+      <div class="start-btn-box">
+      <button class="play-btn" id="s-btn" onclick="hideBtn()">ZONK!</button>
+      <button class="hide-btn" id="r-btn" onclick="hideBtn()">REZONK!</button>
+      </div>
+      <!-- <div class="p-div"><p id="pStuff"></p></div>
+      <div class="input-area"><input type="text" class="input"></div> -->
+      <div id="output"></div>
+      
+      <div class="input-container">
+      <input type="text" id="input">
+      <button id="submit">Submit</button>
+      </div>
+      
+      <div class="controls-div">
+         <button class="control" id="north">NORTH</button>
+         <button class="control" id="south">SOUTH</button>
+         <button class="control" id="west">WEST</button>
+         <button class="control" id="east">EAST</button>
+         <button class="control" id="look">LOOK</button>
+         <button class="control" id="take">TAKE</button>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- #region Navbar Code -->
+<!-- <div class="one" id="one">
 <a href="#" class="navbar-link" onclick="SwitchMenu()">Click Me</a>
 <a href="#" class="navbar-link" onclick="SwitchMenu()">Click Me</a>
 <a href="#" class="navbar-link" onclick="SwitchMenu()">Click Me</a>
@@ -41,12 +312,8 @@
 <a href="#" class="sub-link">Click Me</a>
 <a href="#" class="sub-link">Click Me</a>
 <a href="#" class="sub-link">Click Me</a>
-</div>
-
-
-
-
-
+</div> -->
+<!-- #endregion -->
 
 <script src="menuLoop.js"></script>
 </body>
