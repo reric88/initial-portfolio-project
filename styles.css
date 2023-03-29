@@ -74,13 +74,52 @@ input[type=radio] {
 
   .link-menu  {
     display: contents;
-    visibility: hidden;
+    /* visibility: hidden; */
   }
   
   .link-menu a {
     visibility: visible;
   }
   
+  .right-nav, .left-nav {
+    background-color: #8c8;
+    width: 75rem;
+    height: 6rem;
+    position:absolute;
+    /* border: 5px solid green; */
+    background-color: transparent;
+  }
+
+  .right-nav::before {
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    /* background-color: red; */
+    right: -6rem;
+    bottom: 15rem;
+    height: 13rem;
+    width: 13rem;
+    /* border-radius: 10%; */
+    border-bottom-right-radius: 100%;
+    box-shadow: 0 15rem 0 0 black;
+  }
+
+  .left-nav::before {
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    /* background-color: red; */
+    left: -6rem;
+    bottom: 15rem;
+    height: 13rem;
+    width: 13rem;
+    /* border-radius: 10%; */
+    border-bottom-left-radius: 100%;
+    box-shadow: 0 15rem 0 0 black;
+  }
+
+
+
   .navbar-container {
     width: 62rem;
     height: 12rem;
@@ -158,6 +197,8 @@ input[type=radio] {
     background-color: purple;
   } */
   
+ 
+
   .change.navbar-link::before {
     height: 12rem;
     width: 100%;
@@ -174,12 +215,13 @@ input[type=radio] {
     font-size: 1.5rem;
     color: var(--white);
     transition: margin-bottom 200ms, color 200ms, font-size 300ms;
-    pointer-events: none;
+    pointer-events:none;
   }
   
   .navbar-link i:hover {
     font-size: 1.7rem;
     transition: font-size 100ms;
+    pointer-events: all;
   }
   
   .change.navbar-link i {
