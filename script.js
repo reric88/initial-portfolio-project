@@ -1,22 +1,135 @@
-// #region Navbar
-const links = document.querySelectorAll('.navbar-link');
+const subMenu = document.querySelectorAll('.sub-menu');
 
-links.forEach((link) => {
-    link.addEventListener('click', () => {
+
+
+
+
+// function getIndex() {
+//   document.addEventListener('click', function (e) {
+//     var target = e.target;
+//     var parent = target.parentNode;
+//     var index = [].indexOf.call(parent.children, target);
+//     console.log("index:", index);
+//   });
+//   }
+// e.target.parentNode;
+// index = [].indexOf.call(link)
+
+
+
+
+
+// ==============================================================================vvvvvvvvvvvvvvvvvvvvvv
+
+const navLinks = document.querySelectorAll('.navbar-link')
+const subLinks = document.querySelectorAll('.sub-link')
+
+document.addEventListener('click', function (e) {
+    let target = e.target;
+    let parent = target.parentNode;
+    let index = [].indexOf.call(parent.children, target);
+    // console.log(parent.children);
+    // console.log(target);
+    // console.log(index);
+
+        navLinks.forEach((link) => {
+          link.classList.remove('change')
+          console.log(link.classList, 'link.classList');
+        })
+        subLinks.forEach((div) => {
+            div.classList.remove('show-menu')
+            console.log(div.classList, 'div.classList');
+        })
+
+        target.classList.add('change');
+
+        console.log(target.classList, 'target.classList');
+        for (i=0; i<=index; i++) {
+            // console.log(subLinks[index]);
+            
+            if (!subLinks[index].classList.contains('show-menu')) {
+              subLinks[index].classList.add('show-menu');
+              subLinks.forEach((div) => {
+                div.classList.remove('show-menu')
+                console.log(div.classList, 'div.classList');
+            })
+            } else {
+              subLinks[index].classList.remove('show-menu')
+            }
+            console.log(subLinks[index].classList, 'subLinks.classList');
+      }
         
-        links.forEach((link) => {
-        link.className = 'navbar-link';
-        });
-        link.classList.add('change');
+        
+  });
 
-    });
-});
+
+// =================================================================================^^^^^^^^^^^^^^
+
+
+
+
+// #region Navbar
+// const links = document.querySelectorAll('.navbar-link');
+
+// links.forEach((link) => {
+//     link.addEventListener('click', () => {
+        
+//         links.forEach((link) => {
+//               link.className = 'navbar-link';
+              
+//         });
+//         link.classList.add('change');
+//     });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+// for (n=0, len=links.length; i<len; i++ ) {
+//   links[n].onclick = function () {
+//     alert(index)
+//   }
+// }
+
+
+
+// links.forEach((link) => {
+//   link.addEventListener('click', () => {
+//     links.forEach((link) => {
+//       for (i=0; i<=subMenu; i++) {
+//         if (subMenu[i] == =================)
+//       }
+    
+
+//     })
+//   })
+// })
+
+
+
+
+
+
+
+// for (i=0; i<=links.length -1; i++) {
+//   for (n=0; n<=subMenu.length -1; n++) {
+//     if (links[i] == subMenu[n]) {
+//       console.log(links, subMenu);
+//     }
+//   }
+// }
 // #endregion
 
 // #region About/Contact/projects
 let index = 0;
-
-
 
 function show1(){
     document.getElementById('about-p').style.display ='block';

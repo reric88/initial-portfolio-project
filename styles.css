@@ -52,6 +52,24 @@ input[type=radio] {
     place-items: start center;
   }
   
+
+.sub-menu-container {
+    width: 60rem;
+    border: 1px solid purple;
+    position: relative;
+}
+
+  .sub-menu {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    top: 8rem;
+    z-index: 11;
+}
+
+
+
 /* #region Navbar */
 
   .link-menu  {
@@ -171,6 +189,12 @@ input[type=radio] {
   }
 
 /* #endregion */
+
+
+
+
+
+
 
 /* #region Text Background */
 
