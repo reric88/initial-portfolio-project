@@ -246,22 +246,9 @@ function takeItem() {
     inventory.push(roomItem);
     itemList[currentRoom] = undefined;
 
-    
-console.log(itemList);
-
-delete itemList[5];
-
-if (itemList[currentRoom] != undefined) {
-    let items = itemList[currentRoom];
-    inventory.push(items);
-    delete items;
-    items = undefined;
-    outputDiv.innerHTML += "<p>" + 'You picked up a ' + items + "</p>";
+    outputDiv.innerHTML += "<p>" + 'You picked up a' + roomItem + "</p>";
     outputDiv.scrollTop = outputDiv.scrollHeight;
-} else (itemList[currentRoom] = undefined)
-    console.log(itemList);
-    console.log(inventory);
-}
+  }
 // #region Controls
 
 // DIRECTIONS
@@ -408,27 +395,8 @@ function handleInput(input) {
 
   switch (input) {
  
- // ITEMS
-    // case "pick up key":
-    //   if (currentRoom === 2) {
-    //     inventory.push("key");
-    //     console.log("You picked up a key.");
-    //     
-    //     outputDiv.innerHTML += "<p>" + "You picked up a key." + "</p>";
-    //     outputDiv.scrollTop = outputDiv.scrollHeight;
-    //   } else {
-    //     console.log("There's nothing to pick up here.");
-    //     
-    //     outputDiv.innerHTML +=
-    //       "<p>" + "There's nothing to pick up here." + "</p>";
-    //     outputDiv.scrollTop = outputDiv.scrollHeight;
-    //   }
-    //   break;
 
     
-
-
-
  // DONT UNDERSTAND COMMAND
     default:
       console.log("I don't understand that command.");
