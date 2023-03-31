@@ -148,6 +148,13 @@ body {
   border: 3px solid #aca9;
   border-radius: 5px;
   font-size: 4rem;
+  background-image: linear-gradient(to bottom, rgba(5, 8, 5, 0.6) 0%, rgba(86, 139, 86, 0.6) 40%);
+  box-shadow: 2rem 2rem 5rem 0rem #050505;
+}
+
+#input:hover {
+    
+  /* transform: scale(.98); */
 }
 
 #submit {
@@ -161,6 +168,13 @@ body {
   margin: 1rem;
   font-size: 3rem;
   font-weight: 600;
+  background-image: linear-gradient(to bottom, #8c89 0%, #4849 40%);
+  box-shadow: 2rem 2rem 5rem 0rem #050505;
+}
+
+#submit:hover {
+    
+  transform: scale(0.97);
 }
 
 #submit .chiseled {
@@ -168,27 +182,31 @@ body {
 }
 
 #north {
-  /* translate: 0 -5rem; */
-}
-
-#south {
-  translate: 0 15rem;
-}
-
-#west {
   translate: -15rem 7rem;
 }
 
+#south {
+  translate: -15rem 22rem;
+}
+
+#west {
+  translate: -30rem 14rem;
+}
+
 #east {
-  translate: 15rem 7rem;
+  translate: 0rem 14rem;
 }
 
 #take {
-  translate: 15rem 22rem;
+  translate: 22rem 22rem;
 }
 
 #look {
-    translate: -15rem 22rem;
+    translate: 38rem 22rem;
+}
+
+#inventory {
+    translate: 30rem 7rem;
 }
 
 #pStuff {
@@ -218,10 +236,17 @@ body {
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 600;
+  background-image: linear-gradient(to bottom, #8c89 0%, #4849 40%);
+  box-shadow: 2rem 2rem 5rem 0rem #050505;
+}
+
+.control:hover {
+    
+  transform: scale(0.97);
 }
 
 .control .chiseled {
-    font-size: 1rem;
+    font-size: 3.5rem;
 }
 
 @media (width < 800px) {

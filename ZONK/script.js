@@ -117,6 +117,84 @@ const textElement = document.querySelector("#output");
 textElement.appendChild(img);
 }
 
+
+
+
+
+
+function openBag() {
+  invIndex = 0;
+  speed = 50;
+  outputDiv.innerHTML += '<br>' + 'You are carrying:' + '<br>';
+  outputDiv.scrollTop = outputDiv.scrollHeight;
+  let audioInv = new Audio('Sounds/openBag.mp3')
+  audioInv.play();
+  printInventory();
+
+
+
+
+}
+
+
+function printInventory() {
+ 
+  let audioType = new Audio('Sounds/keyboardKey.wav')
+  if (invIndex < inventory.toString().length) {
+    outputDiv.innerHTML += inventory.toString().charAt(invIndex);
+    console.log(inventory.toString().charAt(invIndex));
+    console.log(inventory.toString().length);
+    invIndex++;
+    audioType.play();
+    setTimeout(printInventory, speed);
+    
+    if (invIndex >= inventory.toString().length) {
+      outputDiv.innerHTML += '<br>' + '<br>';
+
+    }
+  }
+  outputDiv.scrollTop = outputDiv.scrollHeight;
+}
+
+
+
+
+
+// let invIndex = -1;
+
+// let speed = 50;
+// function printInventory() {
+//   console.log(inventory);
+//  console.log(invIndex);
+// if (invIndex < 0) {
+// }
+//   let audioType = new Audio('Sounds/keyboardKey.wav')
+//   if (invIndex < inventory[0].length) {
+//     invIndex++;
+//     outputDiv.innerHTML += inventory[0].charAt(invIndex);
+//     console.log(inventory[0].charAt(invIndex));
+//     console.log(inventory[0].length);
+//     audioType.play();
+//     setTimeout(printInventory, speed);
+    
+//     if (invIndex >= inventory[0].length - 1) {
+//       outputDiv.innerHTML += '<br>' + '<br>';
+//       // index++;
+//       // setTimeout(typingText, speed);
+
+//     }
+//   }
+//   outputDiv.scrollTop = outputDiv.scrollHeight;
+// }
+
+
+
+
+
+
+
+
+
 // function displayImage() {
 // const img = document.createElement("img");
 // img.src = 'Images/shack.png';
@@ -197,6 +275,11 @@ if (document.querySelector('#r-btn').className === 'play-btn') {
       handleInput("take");
     });
   
+    document.getElementById("inventory").addEventListener("click", function() {
+      // handleInput("inventory");
+      openBag();
+    });
+  
     // SUBMIT BUTTON
     document.getElementById("submit").addEventListener("click", function () {
       handleInput(document.getElementById("input").value.toLowerCase());
@@ -256,7 +339,8 @@ function printRoomDescription() {
       description = 'The trees are thinner and a brook lies here.';
       break;
     case 5:
-      description = 'You are halfway through the bushes when the ground below you gives way and you tumble down a steep hill. You hit the bottom with great force and are dazed for a moment. After sitting up you rub your already aching head and look over yourself at all your new scrapes, cuts and bruises. Sighing first, you groan as you stand up and look ahead. You\'ve entered a clearing with a spring in the center.';
+      description = 'You fall down the hill or something.';
+      // 'You are halfway through the bushes when the ground below you gives way and you tumble down a steep hill. You hit the bottom with great force and are dazed for a moment. After sitting up you rub your already aching head and look over yourself at all your new scrapes, cuts and bruises. Sighing first, you groan as you stand up and look ahead. You\'ve entered a clearing with a spring in the center.';
       break;
     case 6:
       description = 'You are at the entrance to the forest.'
@@ -443,13 +527,13 @@ const roomDescription = {
 
 
 const itemList = {
-    1: 'Stick',
-    2: 'Rusted Key',
-    3: 'Dirty Twinkie',
-    4: 'Jamie Flynt',
-    5: 'John Hunter',
-    6: 'Your Mom',
-    7: 'What even is this?',
+    1: ' Stick',
+    2: ' Rusted Key',
+    3: ' Dirty Twinkie',
+    4: ' Jamie Flynt',
+    5: ' John Hunter',
+    6: ' Your Mom',
+    7: ' What even is this?',
     8: 'No item yet.',
     9: 'No item yet.',
     10: 'No item yet.',
@@ -471,12 +555,14 @@ function takeItem() {
     const roomItem = itemList[currentRoom];
 
     if (roomItem === undefined) {
+      playAudio('Sounds/error.wav');
         outputDiv.innerHTML += "<p>" + 'There is nothing worth taking.' + "</p>";
     outputDiv.scrollTop = outputDiv.scrollHeight;
     return;
     } 
 
     if (inventory.includes(roomItem)) {
+      playAudio('Sounds/error.wav');
         outputDiv.innerHTML += "<p>" + 'You have already searched this room.' + "</p>";
     outputDiv.scrollTop = outputDiv.scrollHeight;
     return;
@@ -484,11 +570,14 @@ function takeItem() {
 
     inventory.push(roomItem);
     itemList[currentRoom] = undefined;
+    playAudio('Sounds/success4.wav');
 
     outputDiv.innerHTML += "<p>" + 'You picked up a ' + roomItem + "</p>";
     outputDiv.scrollTop = outputDiv.scrollHeight;
   }
 // #region Controls
+
+
 
 // DIRECTIONS
 
