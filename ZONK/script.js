@@ -3,22 +3,64 @@ let currentRoom = 1;
 let lastRoom = 0;
 let prevRoom = currentRoom;
 let inventory = [];
-
+let startBtn = document.querySelector('#s-btn');
+let reloadBtn = document.querySelector('#r-btn');
+let inputControls;
+// const shackImage = displayImage('Images/shack.png')
 const outputDiv = document.getElementById("output");
+let ethnoamb = document.getElementById('forest-ambience');
+// #region Starting the game
+console.log(document.getElementById('forest-ambience'));
+// let ethnoamb = document.getElementById('forest-ambience');
+function hideBtn() {
+  let startBtn = document.querySelector('#s-btn');
+  let reloadBtn = document.querySelector('#r-btn');
+  let outputDiv = document.getElementById('output');
+  setTimeout(() => {
+    if (
+      startBtn.className === 'play-btn' &&
+      reloadBtn.className === 'hide-btn'
+    ) {
+      startBtn.className = 'hide-btn';
+      reloadBtn.className = 'play-btn';
+      startGame();
+    } else if (
+      startBtn.className === 'hide-btn' &&
+      reloadBtn.className === 'play-btn'
+      ) {
+        startBtn.className = 'play-btn';
+        reloadBtn.className = 'hide-btn';
+        outputDiv.innerHTML = ''
+        // pauseAudio('Sounds/forestEthnoAmbience.wav');
+        pauseLoop();
+        
+        
+      }
+    }, 150);
+  }
+
+  // document.getElementById('forest-ambience')
+  function startGame() {
+    // audio.play();
+    // playAudio();
+    // playAudio('Sounds/forestEthnoAmbience.wav');
+    playLoop();
+    console.log("Welcome to the game! Type 'help' for a list of commands.");
+    document.getElementById("output").innerHTML +=
+      "<p>Welcome to the game! Type 'help' for a list of commands. Actually don't bother, just use the buttons.</p>" + '<p>You awaken, confused. Your head aches with the furor of Jack Rebney.</p>';
+  
+    printRoomDescription();
+  }
+// #endregion
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+function audioControl(src, playPause) {
+if (playPause == 'play') {
+  new Audio(src).play();
+} else {
+  new Audio(src).pause();
+}
+}
 
 
 
@@ -44,14 +86,153 @@ function win() {
   startBtn.className = 'play-btn';
   reloadBtn.className = 'hide-btn';
   outputDiv.innerHTML = ''
+  audioControl(document.getElementById('forest-ambience'), 'pause')
 }
+
+
+
+function playAudio(src) {
+  const audio = new Audio(src);
+  audio.play()
+  }
+
+function playLoop() {
+  ethnoamb.loop = true;
+  ethnoamb.play()
+  }
+
+  function pauseLoop() {
+    ethnoamb.loop = false;
+    ethnoamb.pause();
+    ethnoamb.currentTime = 0;
+  }
+
+
+
+
+function displayImage(src) {
+const img = document.createElement("img");
+img.src = src;
+const textElement = document.querySelector("#output");
+textElement.appendChild(img);
+}
+
+// function displayImage() {
+// const img = document.createElement("img");
+// img.src = 'Images/shack.png';
+// const textElement = document.querySelector("#output");
+// textElement.appendChild(img);
+// }
+
+  // const imgPath = "Images/shack.png";
+// const img = document.createElement("img");
+// img.src = imgPath;
+
+
+
+
+
+// function displayImage(src, width, height) {
+//   let img = new Image();
+//   img.src = src;
+//   img.width = width;
+//   img.height = height;
+//   document.body.appendChild(img);
+// }
+// function displayImage(src, width, height) {
+//   let img = document.createElement('img');
+//   img.src = src;
+//   img.width = width;
+//   img.height = height;
+//   document.body.appendChild(img);
+// }
+
+
+// if (document.querySelector('#s-btn').className === 'hide-btn') {}
+
 // [...document.getElementsByClassName('control')].forEach(function(btnPress){
-//   document.button 
-// })
+  //   document.button 
+  // })
+  
 
 
 
 
+
+
+if (document.querySelector('#r-btn').className === 'play-btn') {
+  
+
+}
+
+
+
+
+
+
+
+ 
+  // if (startBtn.className === 'hide-btn') {
+    document.getElementById("north").addEventListener("click", function() {
+      handleInput("north");
+    });
+  
+    document.getElementById("south").addEventListener("click", function() {
+      handleInput("south");
+    });
+  
+    document.getElementById("east").addEventListener("click", function() {
+      handleInput("east");
+    });
+  
+    document.getElementById("west").addEventListener("click", function() {
+      handleInput("west");
+    });
+  
+    document.getElementById("look").addEventListener("click", function() {
+      handleInput("look");
+    });
+  
+    document.getElementById("take").addEventListener("click", function() {
+      handleInput("take");
+    });
+  
+    // SUBMIT BUTTON
+    document.getElementById("submit").addEventListener("click", function () {
+      handleInput(document.getElementById("input").value.toLowerCase());
+    });
+  
+    document.getElementById("input").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        handleInput();
+      }
+    });
+  // }
+  
+
+document.getElementById("input").addEventListener("keydown", function (event) {
+if (event.key === "Enter") {
+  handleInput();
+}
+});
+
+// #region print users input
+function printUserInput(input) {
+let inputDiv = document.getElementById("input");
+let p = document.createElement("p");
+p.innerHTML = input;
+inputDiv.appendChild(p);
+inputDiv.scrollTop = inputDiv.scrollHeight;
+}
+
+// #endregion
+
+
+if (currentRoom === 2) {
+  // const shackImageElement = document.querySelector("#shack-image")
+  // shackImageElement.appendChild(img)
+  displayImage('Images/shack.png')
+}
 
 
 
@@ -63,64 +244,49 @@ function printRoomDescription() {
   let description;
   switch (currentRoom) {
     case 1:
-      description = 'You are in a small clearing of the forest.';
-      // look = 'You are surrounded by trees on nearly all sides. Birds and squirrels are flitting about in the treetops and you can hear the leaves rustling. There is a clear path to the north and you can make out a building in the distance. There is also an overgrown path to the east, leading deeper into the forest.'
+      description = 'You are in a small clearing of the forest.';  
       break;
     case 2:
       description = "There is a large shack ahead.";
-      // look = 'You see a large shack ahead and the door is slightly ajar. You can hear some slow shuffling coming from inside. A dense line of trees are to the east and to the west. There is a path to the south.'
       break;
     case 3:
       description = "The forest is bearing down on you.";
-      // look = 'The canopy blocks most of the light here and you can barely see past the wall of brush and brambles around you. But you can make out a narrow dirt track on the ground leading west, as well as north and south. There is a hollowed out tree to the east. There seems to be a small white box lying on the ground there.'
       break;
     case 4:
-      description = 'The tree\'s are thinner and a brook lies here.';
-      // look = 'You can see some sunlight coming through the tops of the trees. There is a brook nearby and the light is glinting off the water with a quiet briliance. The brook leads north. There is a path to the south leading north beside the brook. There is what looks to be a bears den to the west. You\'d best stay away from there. There is a impassable cliff wall to the east.'
+      description = 'The trees are thinner and a brook lies here.';
       break;
     case 5:
       description = 'You are halfway through the bushes when the ground below you gives way and you tumble down a steep hill. You hit the bottom with great force and are dazed for a moment. After sitting up you rub your already aching head and look over yourself at all your new scrapes, cuts and bruises. Sighing first, you groan as you stand up and look ahead. You\'ve entered a clearing with a spring in the center.';
-      // look = 'The gentle sound of nature here soothes you, and the forest seems to be getting thinner. A brook runs from the spring to the south, there is an impassable cliff wall to the east and a steep drop to the north. A well-worn path leads from the spring to the west.'
       break;
     case 6:
       description = 'You are at the entrance to the forest.'
-      // look = ''
       break;
     case 7:
       description = 'A dilapidated manor stands before you.';
-      // look = ''
       break;
     case 8:
       description = 'You are in the foyer of the manor.';
-      // look = ''
       break;
     case 9:
       description = 'There is a staircase here.';
-      // look = ''
       break;
     case 10:
       description = 'The cellar reeks of earth and mildew.';
-      // look = ''
       break;
     case 11:
       description = 'It is pitch black.';
-      // look = ''
       break;
     case 12:
       description = 'You are in a small cave.';
-      // look = ''
       break;
     case 13:
       description = 'You are in large a cistern.';
-      // look = ''
       break;
     case 14:
       description = 'You are at the top landing.';
-      // look = ''
       break;
     case 15:
       description = 'You are in an antechamber.';
-      // look = ''
       break;
     case 16:
       description = `You slowly push the door open as you peek inside. The door groans and squeaks loudly as flakes of rust fall from the hinges onto the floor. 
@@ -148,18 +314,63 @@ function printRoomDescription() {
       description = "You are lost.";
       break;
   }
-  console.log(description);
+  // console.log(description);
+  // index = 0;
+  // if (index < typedDescription) {
+  //   outputDiv.innerHTML += typedDescription.charAt(index);
+  //         index ++;
+  //         setTimeout(typingText, speed);
+  //       }
+  // outputDiv.scrollTop = outputDiv.scrollHeight;
+  const outputDiv = document.getElementById('output');
+  let typedDescription = description;
+  let index = 0;
+  const speed = 50;
+  // outputDiv.innerHTML = '';
+  function typingText() {
+    let audio = new Audio('Sounds/keyboardKey.wav')
+    if (index < typedDescription.length) {
+      outputDiv.innerHTML += typedDescription.charAt(index);
+      index++;
+      audio.play();
+      setTimeout(typingText, speed);
+      
+      if (index >= typedDescription.length) {
+        outputDiv.innerHTML += '<br>' + '<br>';
+        // index++;
+        // setTimeout(typingText, speed);
   
-  outputDiv.innerHTML += "<p>" + description + "</p>";
-  outputDiv.scrollTop = outputDiv.scrollHeight;
+      }
+    }
+    outputDiv.scrollTop = outputDiv.scrollHeight;
+  }
+  typingText();
 }
+
+
+
+
+
+// }
 // #endregion
 
 
-const roomDescription = {
-    1: 'You are surrounded by trees on all sides. Birds and squirrels are flitting about in the treetops, chirping and chittering without a care in the world. The leaves rustle in the wind and you get a strong wiff of pine needles, damp leaves and dirt. There is a clear path to the <span>north</span> and you can make out a building in the distance. There is also an overgrown path to the <span>east</span>, leading deeper into the forest.',
 
-    2: 'You see a large shack ahead; the door is slightly ajar and you can hear some slow shuffling and scraping on wood coming from inside. Could it be someone who can help you, or could it be your assailant? As you ponder this, a dark silhouette passes across the gap between the door and the doorframe. A dense line of trees are to the east and to the west. There is a path to the <span>south</span> leading deeper into the forest and a path to the <span>north</span> leading into the shack.',
+
+const imgPath = "Images/shack.png";
+const img = document.createElement("img");
+img.src = imgPath;
+
+const textElement = document.querySelector("#output");
+
+
+
+
+
+const roomDescription = {
+    1: `You are surrounded by trees on all sides. Birds and squirrels are flitting about in the treetops, chirping and chittering without a care in the world. The leaves rustle in the wind and you get a strong wiff of pine needles, damp leaves and dirt. There is a clear path to the "<span>"north"</span> and you can make out a building in the distance. There is also an overgrown path to the <span>east</span>, leading deeper into the forest.`,
+
+    2: `You see a large shack ahead; the door is slightly ajar and you can hear some slow shuffling and scraping on wood coming from inside. Could it be someone who can help you, or could it be your assailant? As you ponder this, a dark silhouette passes across the gap between the door and the doorframe. A dense line of trees are to the east and to the west. There is a path to the <span>south</span> leading deeper into the forest and a path to the <span>north</span> leading into the shack.`,
     
     3: 'The canopy blocks most of the light here and you can barely see past the wall of brush and brambles around you. The forest floor is covered in a thick layer of leaves and sticks; the overgrowth is suffocating. You can barely make out a narrow track of dirt on the ground leading <span>west</span>, as well as to the <span>north</span> and to the <span>south</span>. There is a hollowed out tree to the <span>east</span>. There seems to be a small white box lying on the ground there.',
     
@@ -193,24 +404,52 @@ const roomDescription = {
 
 }
 
-function printLook() {
-    const description = roomDescription[currentRoom];
+
+
+
+// function printLook() {
+  //     const description = roomDescription[currentRoom];
+  let typedDescription = roomDescription;
+  let index = 0;
+  
+  
+  
+  function printLook() {
+      console.log(roomDescription[1].length);
+      let speed = 50;
+      let audio = new Audio('Sounds/keyboardKey.wav')
+      const typedDescription = roomDescription[currentRoom]
+      if (index < typedDescription.length) {
+        outputDiv.innerHTML += typedDescription.charAt(index);
+        index++;
+        audio.play();
+        setTimeout(printLook, speed);
+        
+        if (index >= typedDescription.length) {
+          outputDiv.innerHTML += '<br>' + '<br>';
+          // index++;
+          // setTimeout(typingText, speed);
     
-    outputDiv.innerHTML += "<p>" + description + "</p>";
-    outputDiv.scrollTop = outputDiv.scrollHeight;
-}
+        }
+      }
+      outputDiv.scrollTop = outputDiv.scrollHeight;
+    }
+
+    // outputDiv.innerHTML += "<p>" + description + "</p>";
+    // outputDiv.scrollTop = outputDiv.scrollHeight;
+// }
 
 
 
 
 const itemList = {
-    1: 'No item yet.',
-    2: 'No item yet.',
-    3: 'No item yet.',
-    4: 'No item yet.',
-    5: 'No item yet.',
-    6: 'No item yet.',
-    7: 'No item yet.',
+    1: 'Stick',
+    2: 'Rusted Key',
+    3: 'Dirty Twinkie',
+    4: 'Jamie Flynt',
+    5: 'John Hunter',
+    6: 'Your Mom',
+    7: 'What even is this?',
     8: 'No item yet.',
     9: 'No item yet.',
     10: 'No item yet.',
@@ -246,7 +485,7 @@ function takeItem() {
     inventory.push(roomItem);
     itemList[currentRoom] = undefined;
 
-    outputDiv.innerHTML += "<p>" + 'You picked up a' + roomItem + "</p>";
+    outputDiv.innerHTML += "<p>" + 'You picked up a ' + roomItem + "</p>";
     outputDiv.scrollTop = outputDiv.scrollHeight;
   }
 // #region Controls
@@ -385,6 +624,7 @@ function handleInput(input) {
       } else {
         lastRoom = currentRoom;
         currentRoom = transition;
+        playAudio('Sounds/footstepsGravel.mp3')
         printRoomDescription();
         if (currentRoom === 16) {
           died();
@@ -393,20 +633,15 @@ function handleInput(input) {
     
 
 
-  switch (input) {
- 
-
-    
- // DONT UNDERSTAND COMMAND
-    default:
-      console.log("I don't understand that command.");
-      
-      outputDiv.innerHTML +=
-      "<p>" + "I don't understand that command." + "</p>";
-      outputDiv.scrollTop = outputDiv.scrollHeight;
-
-      break;
-  }
+      // DONT UNDERSTAND COMMAND
+  // switch (input) {    
+  //   default:
+  //     console.log("I don't understand that command.");
+  //     outputDiv.innerHTML +=
+  //     "<p>" + "I don't understand that command." + "</p>";
+  //     outputDiv.scrollTop = outputDiv.scrollHeight;
+  //     break;
+  // }
 
 
 
@@ -418,94 +653,19 @@ function handleInput(input) {
 }
 
 function deadEnd() {
-    
+    playAudio('Sounds/error.wav');
     outputDiv.innerHTML += "<p>" + "You can't go that way." + "</p>";
     outputDiv.scrollTop = outputDiv.scrollHeight;
 }
 
 // #endregion
 
-document.getElementById("north").addEventListener("click", function() {
-    handleInput("north");
-  });
-  
-  document.getElementById("south").addEventListener("click", function() {
-    handleInput("south");
-  });
-  
-  document.getElementById("east").addEventListener("click", function() {
-    handleInput("east");
-  });
-  
-  document.getElementById("west").addEventListener("click", function() {
-    handleInput("west");
-  });
-  
-  document.getElementById("look").addEventListener("click", function() {
-    handleInput("look");
-  });
-
-  document.getElementById("take").addEventListener("click", function() {
-    handleInput("take");
-  });
+// document.getElementById('ppp').appendChild += displayImage(shack.png, 160, 144);
 
 
-document.getElementById("submit").addEventListener("click", function() {
-  handleInput(document.getElementById("input").value.toLowerCase());
-});
-// SUBMIT BUTTON
-document.getElementById("submit").addEventListener("click", handleInput);
-
-document.getElementById("input").addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    handleInput();
-  }
-});
-
-// #region print users input
-function printUserInput(input) {
-  let inputDiv = document.getElementById("input");
-  let p = document.createElement("p");
-  p.innerHTML = input;
-  inputDiv.appendChild(p);
-  inputDiv.scrollTop = inputDiv.scrollHeight;
-}
-// #endregion
 
 
-// #region Starting the game
-function startGame() {
-  console.log("Welcome to the game! Type 'help' for a list of commands.");
-  document.getElementById("output").innerHTML +=
-    "<p>Welcome to the game! Type 'help' for a list of commands. Actually don't bother, just use the buttons.</p>" + '<p>You awaken, confused. Your head aches with the furor of Jack Rebney.</p>';
 
-  printRoomDescription();
-}
-
-function hideBtn() {
-  let startBtn = document.querySelector('#s-btn');
-  let reloadBtn = document.querySelector('#r-btn');
-  let outputDiv = document.getElementById('output');
-  setTimeout(() => {
-    if (
-      startBtn.className === 'play-btn' &&
-      reloadBtn.className === 'hide-btn'
-    ) {
-      startBtn.className = 'hide-btn';
-      reloadBtn.className = 'play-btn';
-      startGame();
-    } else if (
-      startBtn.className === 'hide-btn' &&
-      reloadBtn.className === 'play-btn'
-    ) {
-      startBtn.className = 'play-btn';
-      reloadBtn.className = 'hide-btn';
-      outputDiv.innerHTML = ''
-
-    }
-  }, 150);
-}
-// #endregion
 
 
 

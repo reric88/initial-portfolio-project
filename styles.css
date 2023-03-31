@@ -410,8 +410,8 @@ input[type=radio] {
     display: flex;
 }
 
-#textbox p {
-    line-height: 1.4;
+#textbox #about-p {
+    line-height: 1.5;
 }
 
 .a-tab {

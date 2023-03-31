@@ -187,22 +187,73 @@ function show1(){
 // }
 
 
-index = 0;
-let text = `'The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy My brothers. And you will know I am the Lord when I lay My vengeance upon you.'
-Now... I been sayin' that shit for years. And if you ever heard it, that meant your ass. You'd be dead right now. I never gave much thought to what it meant. I just thought it was a cold-blooded thing to say to a motherfucker before I popped a cap in his ass. But I saw some shit this mornin' made me think twice. See, now I'm thinking: maybe it means you're the evil man. And I'm the righteous man. And Mr. 9mm here… he's the shepherd protecting my righteous ass in the valley of darkness. Or it could mean you're the righteous man and I'm the shepherd and it's the world that's evil and selfish. And I'd like that. But that shit ain't the truth. The truth is you're the weak. And I'm the tyranny of evil men. But I'm tryin', Ringo. I'm tryin' real hard to be the shepherd.`;
+
+
+// `'The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy My brothers. And you will know I am the Lord when I lay My vengeance upon you.'
+// Now... I been sayin' that shit for years. And if you ever heard it, that meant your ass. You'd be dead right now. I never gave much thought to what it meant. I just thought it was a cold-blooded thing to say to a motherfucker before I popped a cap in his ass. But I saw some shit this mornin' made me think twice. See, now I'm thinking: maybe it means you're the evil man. And I'm the righteous man. And Mr. 9mm here… he's the shepherd protecting my righteous ass in the valley of darkness. Or it could mean you're the righteous man and I'm the shepherd and it's the world that's evil and selfish. And I'd like that. But that shit ain't the truth. The truth is you're the weak. And I'm the tyranny of evil men. But I'm tryin', Ringo. I'm tryin' real hard to be the shepherd.`;
+
+
+// const aboutMe1 = `Hey! I am Eric Collard and I have recently transitioned into web development from a background in carpentry and construction. After completing a rigorous coding bootcamp, Commonwealth Coders, I have gained a solid foundation in web development and am excited to continue growing my skills in this field.`;
+// const aboutMe2 = `While my background may not be typical for a web developer, I bring a unique set of skills and experiences to the table. I am a detail-oriented problem solver with experience in project management and a passion for learning and implementing new technologies.`;
+// const aboutMe3 = `I am excited to contribute my expertise in building and construction to web development, leveraging my experience in creating strong foundations and attention to detail to build reliable and robust web applications.`;
+// const aboutMe4 = `Overall, I am dedicated to delivering high-quality results and constantly improving my skills to become a valuable member of any development team.`;
+
+
+
+const aboutMe = `Hey! I am Eric Collard and I have recently transitioned into web development from a background in carpentry and construction. After completing a rigorous coding bootcamp, Commonwealth Coders, I have gained a solid foundation in web development and am excited to continue growing my skills in this field.
+
+While my background may not be typical for a web developer, I bring a unique set of skills and experiences to the table. I am a detail-oriented problem solver with experience in project management and a passion for learning and implementing new technologies.
+
+I am excited to contribute my expertise in building and construction to web development, leveraging my experience in creating strong foundations and attention to detail to build reliable and robust web applications.
+
+Overall, I am dedicated to delivering high-quality results and constantly improving my skills to become a valuable member of any development team.`;
 let speed = 15;
+index = 0;
 
 function typingText() {
-    if (index < text.length) {
-      document.getElementById('about-p').innerHTML += text.charAt(index);
-      index ++;
-      setTimeout(typingText, speed);
+if (index < aboutMe.length) {
+        document.getElementById('about-p').innerHTML += aboutMe.charAt(index);
+        index ++;
+        setTimeout(typingText, speed);
+      }
     }
-    if (index >= text.length) {
-        
-    }
-  }
-  
+
+// let aboutIndex = 0;
+// let text = '';
+// let index1 = 0;
+// let index2 = 0;
+// let index3 = 0;
+// let index4 = 0;
+// function typingText() {
+//   let aboutP = document.getElementById('about-p').innerHTML;
+//     if (index < aboutMe1.length) {
+//       document.getElementById('about-p').innerHTML += aboutMe1.charAt(index);
+//       index ++;
+//       setTimeout(typingText, speed);
+//       // aboutMe.scrollTop = aboutMe.scrollHeight;
+//       while (index >= aboutMe1.length) {
+//         if (index <= (aboutMe1.length + aboutMe2.length)) {
+//       document.getElementById('about-p').innerHTML += aboutMe2.charAt(index);
+//       index ++;
+//       setTimeout(typingText, speed);
+//         }
+//       }
+//       while (index >= (aboutMe2.length + aboutMe1.length)) {
+//         if (index <= (aboutMe1.length + aboutMe2.length + aboutMe3.length)) {
+//       document.getElementById('about-p').innerHTML += aboutMe2.charAt(index);
+//       index ++;
+//       setTimeout(typingText, speed);
+//         }
+//       }
+//       while (index >= (aboutMe3.length + aboutMe2.length + aboutMe1.length)) {
+//         if (index <= (aboutMe1.length + aboutMe2.length + aboutMe3.length + aboutMe4.length)) {
+//       document.getElementById('about-p').innerHTML += aboutMe2.charAt(index);
+//       index ++;
+//       setTimeout(typingText, speed);
+//         }
+//       }
+//     }
+//  }
 
 
 
