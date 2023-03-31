@@ -287,6 +287,34 @@ input[type=radio] {
     -webkit-text-stroke: 2px var(--black);
 }
 
+.neuro-img {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    /* background-image: url(./Images/Pastel_Neurodiversity_Symbol.png); */
+    /* background-repeat: no-repeat; */
+    /* object-fit: contain; */
+    background-size: 75%;
+    background-attachment: fixed;
+    rotate: -15deg;
+    object-fit: none;
+    overflow: visible;
+    opacity: .6;
+
+}
+
+.nd-container {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #container {
     position: relative;
     margin-top: 12rem;
