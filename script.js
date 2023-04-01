@@ -18,50 +18,93 @@ const subMenu = document.querySelectorAll('.sub-menu');
 
 
 
+// ===========vvvvvvvvvvvvvvvvvvvvvv=========================================== Old navbar code
 
-// ==============================================================================vvvvvvvvvvvvvvvvvvvvvv
+// // console.log(document.querySelector('.link-menu').children);
+// // let inx = [].indexOf.call(parent.children, target);
+// let navLinks = document.querySelectorAll('.navbar-link')
 
-const navLinks = document.querySelectorAll('.navbar-link')
+// // Listen for and return index of clicked item (document-wide)
+// document.addEventListener('click', function (e) {
+//   let navLinks = document.querySelectorAll('.navbar-link')
+//   let subLinks = document.querySelectorAll('.sub-link')
+//   let navLinksDad = document.querySelector('.link-menu');
+//   let subLinksMom = document.querySelector('.sub-menu-container');
+//   let target = e.target;
+//   let parent = target.parentNode;
+//   // let index = [].indexOf.call(parent.children, target);
+
+//     let index = [].indexOf.call(navLinksDad.children, target);
+//     console.log(index);
+//     console.log([].indexOf.call(navLinksDad.children, target));
+//     console.log(target);
+//         // How each 'link' of navLinks will respond to it being clicked
+//         navLinks.forEach((link) => {
+//           link.classList.remove('change')
+//           console.log(link.classList, 'link.classList');
+//         })
+        
+//         // How each div will respond when the corresponding link above is clicked
+//         // subLinks.forEach((div) => {
+//         //     div.classList.remove('show-menu')
+//         //     console.log(div.classList, 'div.classList');
+//         // })
+
+//         // add class 'change' to the clicked element
+//         target.classList.add('change');
+
+//         console.log(target.classList, 'target.classList');
+        
+//         // find the matching index of the subLinks
+//         for (i= 0; i<=index; i++) {
+          
+//           // Remove the show-menu classList from all subLinks
+//           subLinks.forEach((div) => {
+//             div.classList.remove('show-menu')
+//             console.log(div.classList, 'div.classList');
+//           })
+
+//           // if the index of both lists match, add show-menu class to the sub-link
+//           if (!subLinks[i].classList.contains('show-menu')) {
+//             subLinks[i].classList.add('show-menu');
+//             } 
+//       }
+
+//       // Remove the show-menu class from subLink at index 0 because it keeps getting set to show-menu because index is always at least 0
+//       if (!document.querySelectorAll('.navbar-link')[0].className.includes('change')) {
+//         document.querySelectorAll('.sub-link')[0].classList.remove('show-menu');
+    
+//       }
+//   });
+
+
+// ============^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^==============
+
+//=============vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv============== New navbar code
+
+const links = document.querySelectorAll('.navbar-link');
 const subLinks = document.querySelectorAll('.sub-link')
 
-document.addEventListener('click', function (e) {
-    let target = e.target;
-    let parent = target.parentNode;
-    let index = [].indexOf.call(parent.children, target);
-    // console.log(parent.children);
-    // console.log(target);
-    // console.log(index);
+links.forEach((link) => {
+    link.addEventListener('click', () => {
+      const isChanged = link.classList.contains('change');
+      
+      links.forEach((link) => {
+        link.classList.remove('change');              
+      });
+      subLinks.forEach((sublink) =>{
+        sublink.classList.remove('show-menu');
+      });
 
-        navLinks.forEach((link) => {
-          link.classList.remove('change')
-          console.log(link.classList, 'link.classList');
-        })
-        subLinks.forEach((div) => {
-            div.classList.remove('show-menu')
-            console.log(div.classList, 'div.classList');
-        })
 
-        target.classList.add('change');
+      if (!isChanged) {
+        link.classList.add('change');
+        const index = [].indexOf.call(link.parentNode.children, link);
+        subLinks[index].classList.add('show-menu')
 
-        console.log(target.classList, 'target.classList');
-        for (i=0; i<=index; i++) {
-            // console.log(subLinks[index]);
-            
-            if (!subLinks[index].classList.contains('show-menu')) {
-              subLinks[index].classList.add('show-menu');
-              subLinks.forEach((div) => {
-                div.classList.remove('show-menu')
-                console.log(div.classList, 'div.classList');
-            })
-            } else {
-              subLinks[index].classList.remove('show-menu')
-            }
-            console.log(subLinks[index].classList, 'subLinks.classList');
       }
-        
-        
-  });
-
+    });
+});
 
 // =================================================================================^^^^^^^^^^^^^^
 
