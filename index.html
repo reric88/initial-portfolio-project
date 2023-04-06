@@ -15,38 +15,64 @@
   </head>
   <body>
 
+    <div id="cursor" class="drunk red-dot"></div>
+    <div class="body-overlap">
+      
+<label for="userInput">
+  <a>existingCheats[]</a>
+  <input type="checkbox" name="" id="userInput"></label>
+
+
+    </div>
+<div id="body-window" draggable="false">
+</div>
 <div class="much-container-wow-so-big">
     <div class="sub-menu-container">
+      <div class="sub-menu-container-2">
     <div class="sub-link" id="home-menu">
-      <a href="">word</a>
-      <a href="">another word</a>
-      <a href="">and another</a>
+      <a href="#top">Home</a>
+      <form action="" id="cheat-form">
+          <input type="text" name="cheat-code" id="cheat-input" placeholder="Enter your cheat-code(s)!" style="display: inline" required>
+          <a href="" id="cheat-btn"><p>Submit</p></a>
+        </form>
+        <div id="cheat-div"><p id="cheats-p">ACTIVE CHEATS</p>
+          <div id="active-cheats"></div>
+    </div>
+      <!-- <a href="#hdiv8">Something</a> -->
     </div>
     <div class="sub-link" id="about-menu">
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
+      <a href="#hdiv8">About</a>
+      <a href="#hdiv8">Contact</a>
+      <a href="#hdiv8">Resume</a>
     </div>
     <div class="sub-link" id="contact-menu">
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
+      <a href="">Contact</a>
+      <a href="">Email</a>
+      <a href="">Phone</a>
     </div>
     <div class="sub-link" id="projects-menu">
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
+      <a href="./ZONK/index.html" target="_blank"><img id="zonk-logo" src="./Images/zonkLogo2.png" alt="White ZONK! logo with transparent background"></a>
+      <a href="">project</a>
+      <a href="">project</a>
+      <a href="">project</a>
+      <a href="">project</a>
     </div>
     <div class="sub-link" id="qual-menu">
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
+      <a href=""><i class="fa-brands fa-html5"></i></a>
+      <a href=""><i class="fa-brands fa-css3-alt"></i></a>
+      <a href=""><i class="fa-brands fa-bootstrap"></i></a>
+      <a href=""><i class="fa-brands fa-square-js"></i></a>
+      <a href=""><i class="fa-brands fa-python"></i></a>
+      <a href=""><i class="fa-solid fa-gamepad"></i></i></a>
     </div>
     <div class="sub-link" id="social-menu">
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
+      <a href=""><i class="fa-brands fa-instagram"></i></a>
+      <a href=""><i class="fa-brands fa-facebook"></i></a>
+      <a href=""><i class="fa-brands fa-github"></i></a>
+      <a href=""><i class="fa-brands fa-youtube"></i></a>
+      <a href=""><i class="fa-brands fa-linkedin"></i></a>
     </div>
+  </div>
   </div>
 
     <!-- #region Navbar -->
@@ -62,16 +88,16 @@
           <div class="show test social"></div>
         </div> -->
         <div class="link-menu">
-          <a href="#" class="navbar-link" id="home"
-            ><i class="fas fa-home" for="home"></i
+          <a href="#navbar-container" class="navbar-link" id="home"
+            ><i class="fas fa-home"></i
           ></a>
-          <a href="#" class="navbar-link"><i class="fas fa-question"></i></a>
-          <a href="#" class="navbar-link"
+          <a href="#navbar-container" class="navbar-link"><i class="fas fa-question"></i></a>
+          <a href="#navbar-container" class="navbar-link"
             ><i class="fas fa-comment-dots"></i
           ></a>
-          <a href="#" class="navbar-link"><i class="fas fa-folder-open"></i></a>
-          <a href="#" class="navbar-link"><i class="fas fa-scroll"></i></a>
-          <a href="#" class="navbar-link"><i class="fas fa-user-plus"></i></a>
+          <a href="#navbar-container" class="navbar-link"><i class="fas fa-folder-open"></i></a>
+          <a href="#navbar-container" class="navbar-link"><i class="fa-solid fa-code"></i></a>
+          <a href="#navbar-container" class="navbar-link"><i class="fas fa-user-plus"></i></a>
         </div>
       </nav>
     </div>
@@ -86,8 +112,8 @@
     <!-- <div class="nd-container"> -->
       
     <!-- </div> -->
-    <div id="container">
-      <div id="hdiv-container">
+    <div id="container" draggable="false">
+      <div id="hdiv-container" draggable="false">
         <div id="hdiv1" class="break">
           <h1 class="text-hollow">WebDevelopment</h1>
         </div>
@@ -122,7 +148,7 @@
     <!-- #endregion -->
 
     <!-- #region About/Contact/projects -->
-    <div id="tab-container">
+    <div id="tab-container" draggable="false">
       <a href="#" class="a-tab" onclick="show1(), typingText()">
         <label for="about-btn" class="active-label">
           <input type="radio" name="tab" value="display-about" id="about-btn" />
@@ -162,7 +188,7 @@
       </a>
     </div>
 
-    <div id="textbox">
+    <div id="textbox" draggable="false">
       <p class="hide show" name="one" id="about-p">
         <!-- Hey! I am Eric Collard and I have recently transitioned into web development from a background in carpentry and construction. After completing a rigorous coding bootcamp, Commonwealth Coders, I have gained a solid foundation in web development and am excited to continue growing my skills in this field.
       <br>
@@ -333,6 +359,7 @@
     <p>ಠ_ಠ</p>
     
   </div>
+
     <script src="script.js"></script>
   </body>
 </html>

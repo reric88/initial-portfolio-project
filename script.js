@@ -1,8 +1,51 @@
+
+
+
 const subMenu = document.querySelectorAll('.sub-menu');
 
+function audioControl(src, playPause) {
+  if (playPause == 'play') {
+    new Audio(src).play();
+  } else {
+    new Audio(src).pause();
+  }
+}
 
 
 
+
+
+
+
+
+// New Navbar Code
+
+const links = document.querySelectorAll('.navbar-link');
+const subLinks = document.querySelectorAll('.sub-link')
+
+links.forEach((link) => {
+    link.addEventListener('click', () => {
+      const isChanged = link.classList.contains('change');
+      
+      links.forEach((link) => {
+        link.classList.remove('change');              
+      });
+      subLinks.forEach((sublink) =>{
+        sublink.classList.remove('show-menu');
+      });
+
+
+      if (!isChanged) {
+        link.classList.add('change');
+        const index = [].indexOf.call(link.parentNode.children, link);
+        subLinks[index].classList.add('show-menu')
+
+      }
+    });
+});
+
+
+// #region Navbar Testing
 
 // function getIndex() {
 //   document.addEventListener('click', function (e) {
@@ -16,12 +59,10 @@ const subMenu = document.querySelectorAll('.sub-menu');
 // index = [].indexOf.call(link)
 
 
-
-
-// ===========vvvvvvvvvvvvvvvvvvvvvv=========================================== Old navbar code
+//  Old navbar code
 
 // // console.log(document.querySelector('.link-menu').children);
-// // let inx = [].indexOf.call(parent.children, target);
+// let inx = [].indexOf.call(parent.children, target);
 // let navLinks = document.querySelectorAll('.navbar-link')
 
 // // Listen for and return index of clicked item (document-wide)
@@ -77,41 +118,8 @@ const subMenu = document.querySelectorAll('.sub-menu');
 //       }
 //   });
 
+// ==========
 
-// ============^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^==============
-
-//=============vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv============== New navbar code
-
-const links = document.querySelectorAll('.navbar-link');
-const subLinks = document.querySelectorAll('.sub-link')
-
-links.forEach((link) => {
-    link.addEventListener('click', () => {
-      const isChanged = link.classList.contains('change');
-      
-      links.forEach((link) => {
-        link.classList.remove('change');              
-      });
-      subLinks.forEach((sublink) =>{
-        sublink.classList.remove('show-menu');
-      });
-
-
-      if (!isChanged) {
-        link.classList.add('change');
-        const index = [].indexOf.call(link.parentNode.children, link);
-        subLinks[index].classList.add('show-menu')
-
-      }
-    });
-});
-
-// =================================================================================^^^^^^^^^^^^^^
-
-
-
-
-// #region Navbar
 // const links = document.querySelectorAll('.navbar-link');
 
 // links.forEach((link) => {
@@ -125,24 +133,11 @@ links.forEach((link) => {
 //     });
 // });
 
-
-
-
-
-
-
-
-
-
-
-
 // for (n=0, len=links.length; i<len; i++ ) {
 //   links[n].onclick = function () {
 //     alert(index)
 //   }
 // }
-
-
 
 // links.forEach((link) => {
 //   link.addEventListener('click', () => {
@@ -150,28 +145,136 @@ links.forEach((link) => {
 //       for (i=0; i<=subMenu; i++) {
 //         if (subMenu[i] == =================)
 //       }
-    
-
 //     })
 //   })
 // })
 
-
-
-
-
-
-
-// for (i=0; i<=links.length -1; i++) {
-//   for (n=0; n<=subMenu.length -1; n++) {
-//     if (links[i] == subMenu[n]) {
-//       console.log(links, subMenu);
-//     }
-//   }
-// }
 // #endregion
 
-// #region About/Contact/projects
+// #region Cheat Menu Testing
+
+// const cheatBtn = document.querySelector('#cheat-btn')
+
+// cheatBtn.addEventListener("keydown", function (event) {
+//   if (event.key === "Enter") {
+//     handleInput();
+//   }
+//   });
+
+//   function printUserInput(input) {
+//     const cheatInput = document.querySelector('#cheat-input');
+//     const activeCheats = document.querySelector('#active-cheats')
+
+//     let p = document.createElement("p");
+//     p.innerHTML = input;
+//     activeCheats.appendChild(p);
+//     activeCheats.scrollTop = activeCheats.scrollHeight;
+//     }
+
+//   document.addEventListener('DOMContentLoaded', function() {
+//   const customCursor = document.getElementById('cursor');
+//   document.addEventListener('mousemove', function(event) {
+//     const mouseX = event.clientX;
+//     const mouseY = event.clientY;
+//     const invertedX = window.innerWidth - mouseX;
+//     const invertedY = window.innerHeight - mouseY;
+//     customCursor.style.left = invertedX + 'px';
+//     customCursor.style.top = invertedY + 'px';
+//   });
+// });
+
+// #endregion
+
+
+if (document.body.innerText.includes('Blurred Screen')) {
+  document.querySelector('.body-overlap').setAttribute('style', 'display: block;');
+  // document.querySelector('#cursor').setAttribute('style', 'display: block;')
+} else {
+  document.querySelector('.body-overlap').setAttribute('style', 'display: none;');
+  // document.querySelector('#cursor').setAttribute('style', 'display: none;');
+}
+
+// ===== Cheats Array
+const existingCheats = ["Big-Head Mode", "Unlimited Clicking", "Infinite Scrolling", 'Paintball Mode', 'X-Ray Mode', 'Blurred Screen', 'Plumber SFX', 'Elf SFX'];
+
+// ===== Cheat Form & Input
+const cheatForm = document.getElementById("cheat-form");
+const cheatInput = document.getElementById("cheat-input");
+
+// ===== Display Active Cheats
+const activeCheatsDiv = document.getElementById("active-cheats");
+
+// ===== Listen for Cheat Submit
+const cheatBtn = document.getElementById("cheat-btn");
+cheatBtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  
+// ===== Get user input
+  const userInput = cheatInput.value;
+  
+
+    const newCheatsA = document.createElement("a");
+    // ===== Big Head Mode
+    if (userInput === 'ILikeBigHeads') {
+    newCheatsA.textContent = existingCheats[0];
+    activeCheatsDiv.appendChild(newCheatsA);
+  } else 
+    // ===== Unlimited Clicking
+    if (userInput === 'TriggaFinga') {
+    newCheatsA.textContent = existingCheats[1];
+    activeCheatsDiv.appendChild(newCheatsA);
+    unlimitedClicking();
+  } else 
+    // ===== Infinite Scrolling
+    if (userInput === 'NoLimit') {
+    newCheatsA.textContent = existingCheats[2];
+    activeCheatsDiv.appendChild(newCheatsA);
+  } else 
+    // ===== Paintball Mode
+    if (userInput === 'SplatterHouse') {
+    newCheatsA.textContent = existingCheats[3];
+    activeCheatsDiv.appendChild(newCheatsA);
+  } else 
+  // ===== Wireframe Mode
+    if (userInput === 'WireFrame') {
+    newCheatsA.textContent = existingCheats[4];
+    activeCheatsDiv.appendChild(newCheatsA);
+  } else 
+  // ===== Drunk Mode
+    if (userInput === 'SryUmDrink') {
+    newCheatsA.textContent = existingCheats[5];
+    activeCheatsDiv.appendChild(newCheatsA);
+    document.querySelector('.body-overlap').setAttribute('style', 'display: block;')      
+  } else 
+    // ===== Plumber Sound Effects
+    if (userInput === 'SupraMaria') {
+    newCheatsA.textContent = existingCheats[6];
+    activeCheatsDiv.appendChild(newCheatsA);
+  } else 
+    // ===== Lelda Sound Effects
+    if (userInput === 'LonkNotZonk') {
+    newCheatsA.textContent = existingCheats[7];
+    activeCheatsDiv.appendChild(newCheatsA);
+  } else 
+  {
+   alert("Invalid cheat code!");
+ }
+  cheatInput.value = "";
+});
+
+
+// ===== Listen for enter key
+cheatInput.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    
+    // ===== Listen for mouse click
+    cheatBtn.click();
+  }
+});
+// #endregion
+
+
 let index = 0;
 
 function show1(){
@@ -192,6 +295,27 @@ function show1(){
     document.getElementById('projects-p').style.display ='block';
 
   }
+
+  const aboutMe = `Hey! I am Eric Collard and I have recently transitioned into web development from a background in carpentry and construction. After completing a rigorous coding bootcamp, Commonwealth Coders, I have gained a solid foundation in web development and am excited to continue growing my skills in this field.
+
+While my background may not be typical for a web developer, I bring a unique set of skills and experiences to the table. I am a detail-oriented problem solver with experience in project management and a passion for learning and implementing new technologies.
+
+I am excited to contribute my expertise in building and construction to web development, leveraging my experience in creating strong foundations and attention to detail to build reliable and robust web applications.
+
+Overall, I am dedicated to delivering high-quality results and constantly improving my skills to become a valuable member of any development team.`;
+let speed = 15;
+index = 0;
+
+function typingText() {
+if (index < aboutMe.length) {
+        document.getElementById('about-p').innerHTML += aboutMe.charAt(index);
+        index ++;
+        setTimeout(typingText, speed);
+      }
+    }
+
+
+// #region About Test Code
 
 // function growBox(){
 //   document.getElementById('textbox')
@@ -230,8 +354,6 @@ function show1(){
 // }
 
 
-
-
 // `'The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy My brothers. And you will know I am the Lord when I lay My vengeance upon you.'
 // Now... I been sayin' that shit for years. And if you ever heard it, that meant your ass. You'd be dead right now. I never gave much thought to what it meant. I just thought it was a cold-blooded thing to say to a motherfucker before I popped a cap in his ass. But I saw some shit this mornin' made me think twice. See, now I'm thinking: maybe it means you're the evil man. And I'm the righteous man. And Mr. 9mm here… he's the shepherd protecting my righteous ass in the valley of darkness. Or it could mean you're the righteous man and I'm the shepherd and it's the world that's evil and selfish. And I'd like that. But that shit ain't the truth. The truth is you're the weak. And I'm the tyranny of evil men. But I'm tryin', Ringo. I'm tryin' real hard to be the shepherd.`;
 
@@ -241,25 +363,6 @@ function show1(){
 // const aboutMe3 = `I am excited to contribute my expertise in building and construction to web development, leveraging my experience in creating strong foundations and attention to detail to build reliable and robust web applications.`;
 // const aboutMe4 = `Overall, I am dedicated to delivering high-quality results and constantly improving my skills to become a valuable member of any development team.`;
 
-
-
-const aboutMe = `Hey! I am Eric Collard and I have recently transitioned into web development from a background in carpentry and construction. After completing a rigorous coding bootcamp, Commonwealth Coders, I have gained a solid foundation in web development and am excited to continue growing my skills in this field.
-
-While my background may not be typical for a web developer, I bring a unique set of skills and experiences to the table. I am a detail-oriented problem solver with experience in project management and a passion for learning and implementing new technologies.
-
-I am excited to contribute my expertise in building and construction to web development, leveraging my experience in creating strong foundations and attention to detail to build reliable and robust web applications.
-
-Overall, I am dedicated to delivering high-quality results and constantly improving my skills to become a valuable member of any development team.`;
-let speed = 15;
-index = 0;
-
-function typingText() {
-if (index < aboutMe.length) {
-        document.getElementById('about-p').innerHTML += aboutMe.charAt(index);
-        index ++;
-        setTimeout(typingText, speed);
-      }
-    }
 
 // let aboutIndex = 0;
 // let text = '';
@@ -299,7 +402,6 @@ if (index < aboutMe.length) {
 //  }
 
 
-
 //   let placeIndex = 0;
 //   let placeText = "Now... I been sayin' that shit for years. And if you ever heard it, that meant your ass. You'd be dead right now. I never gave much thought to what it meant. I just thought it was a cold-blooded thing to say to a motherfucker before I popped a cap in his ass. But I saw some shit this mornin' made me think twice. See, now I'm thinking: maybe it means you're the evil man. And I'm the righteous man. And Mr. 9mm here… he's the shepherd protecting my righteous ass in the valley of darkness. Or it could mean you're the righteous man and I'm the shepherd and it's the world that's evil and selfish. And I'd like that. But that shit ain't the truth. The truth is you're the weak. And I'm the tyranny of evil men. But I'm tryin', Ringo. I'm tryin' real hard to be the shepherd.";
   
@@ -311,6 +413,8 @@ if (index < aboutMe.length) {
 //     }
 //   }
 // #endregion
+
+
 
 // #region Image Slider
 const sliderContainer = document.querySelector('.slider-container');
@@ -349,6 +453,45 @@ slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`
 
 
 
+// #region Unlimited Clicking Test Code
+
+// document.getRootNode().setAttribute('style', 'cursor: none;')
+
+// function unlimitedClicking() {
+//   const bImages = [];
+  
+//   let intervalCount;
+//   const sound = new Audio('Sounds/HMG-SuperPhat.wav');
+//   document.addEventListener('mousedown', (e) => {
+//     let img = document.createElement('img');
+//     img.src = 'Images/bulletHole2.png';
+//     img.style.position = 'absolute';
+
+//       intervalCount = setInterval(() => {
+//       const xOffset = Math.floor(Math.random() * 101) -75;
+//       const yOffset = Math.floor(Math.random() * 101) -75;
+//       img.style.left = e.pageX + xOffset + 'px';
+//       img.style.top = e.pageY + yOffset + 'px';
+//       document.body.appendChild(img);
+//       bImages.push(img);
+//       sound.currentTime = 0;
+//       sound.play();
+//     }, 120);
+//   });
+
+//   document.addEventListener('mouseup', () => {
+//     sound.pause();
+//     sound.currentTime = 0;
+//     new Audio('Sounds/endHMG-SuperPhat.wav').play();
+//     clearInterval(intervalCount);
+
+//     bImages.forEach((img) => {
+//       img.parentNode.removeChild(img);
+//     });
+
+//     bImages.length = 0;
+//   });
+// }
 
 
 
@@ -357,3 +500,185 @@ slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`
 
 
 
+// function unlimitedClicking() {
+//   const bImages = [];
+
+//   let intervalCount;
+  
+//   document.addEventListener('mousedown', start);
+//   document.addEventListener('touchstart', start);
+//   document.addEventListener('mouseup', end);
+//   document.addEventListener('touchend', end);
+//   const sound = new Audio('Sounds/HMG-SuperPhat.wav');
+  
+//   function start(event) {
+//     intervalCount = setInterval(() => {
+//       let img = document.createElement('img');
+//       img.src = 'Images/bulletHole2.png';
+//       img.style.position = 'absolute';
+      
+//       const xOffset = Math.floor(Math.random() * 101) -75;
+//       const yOffset = Math.floor(Math.random() * 101) -75;
+      
+//       img.style.left = event.clientX + xOffset + 'px';
+//       img.style.top = event.clientY + yOffset + 'px';
+      
+//       document.body.appendChild(img);
+//       bImages.push(img);
+//       sound.play();
+//     }, 125);
+
+//     sound.currentTime = 0;
+//   }
+
+//   function end() {
+//     sound.pause();
+//     sound.currentTime = 0;
+//     clearInterval(intervalCount);
+//     new Audio('Sounds/endHMG-SuperPhat.wav').play();
+
+//     // bImages.forEach((img) => {
+//     //   img.parentNode.removeChild(img);
+//     // });
+
+//     // bImages.length = 0;
+//   }
+// }
+
+// setTimeout(() => {
+//   img.parentNode.removeChild(img);
+// }, 3000)
+
+// #endregion
+
+
+
+// vvvvvvvvvv Unlimited Clicking Function vvvvvvvvvv
+
+function unlimitedClicking() {
+  // Create the array for the images
+  const bImages = [];
+  // Declate interval variable
+  let intervalCount;
+  // Declare the default audio sound
+  const sound = new Audio('Sounds/HMG-SuperPhat.wav');
+
+  // Listen for mouse or touch events
+  document.addEventListener('mousedown', start);
+  document.addEventListener('touchstart', start);
+  document.addEventListener('mouseup', end);
+  document.addEventListener('touchend', end);
+  document.addEventListener('touchmove', move);
+
+  function start(event) {
+    intervalCount = setInterval(() => {
+      // Create the bullet hole image
+      let img = document.createElement('img');
+      img.src = 'Images/bulletHole2.png';
+      img.style.position = 'fixed';
+      img.style.zIndex = '9999';
+
+      // Randomize the bullet hole placement
+      const xOffset = Math.floor(Math.random() * 201) -125;
+      const yOffset = Math.floor(Math.random() * 201) -125;
+
+      // Get mouse or finger position
+      const x = event.clientX || event.touches[0].clientX;
+      const y = event.clientY || event.touches[0].clientY;
+
+      // Set the offset origin fora bullet holes
+      img.style.left = x + xOffset + 'px';
+      img.style.top = y + yOffset + 'px';
+
+      // Add the images to an array
+      document.body.appendChild(img);
+      bImages.push(img);
+
+      // Play the firing sound
+      sound.play();
+    }, 100);
+
+    // Reset the sound to 0 after the timer to avoid overlap
+    sound.currentTime = 0;
+  }
+
+  // Function to end the sound
+  function end() {
+    sound.pause();
+    sound.currentTime = 0;
+    clearInterval(intervalCount);
+
+    // Play the end sound when releasing button or touch
+    new Audio('Sounds/endHMG-SuperPhat.wav').play();
+
+
+    // Remove the bullet holes after button or touch release
+    // bImages.forEach((img) => {
+    //   img.parentNode.removeChild(img);
+    // });
+
+    // bImages.length = 0;
+  }
+
+  // Function to prevent unintended scrolling while active
+  function move(event) {
+    event.preventDefault();
+  }
+}
+
+
+// ^^^^^^^^^^ Unlimited Clicking Function ^^^^^^^^^^
+
+
+// const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+// // set up a scroll listener
+// window.addEventListener('scroll', () => {
+//   // get the current scroll position
+//   let scrollPos = window.scrollY;
+
+//   // if the scroll position is greater than or equal to the height of the document, set it to 0
+//   if (scrollPos >= docHeight) {
+//     scrollPos = 0;
+//   }
+
+//   // set the new scroll position
+//   window.scrollTo(0, scrollPos);
+// });
+
+
+
+
+
+
+// create a new div element to hold the duplicated body
+const newBody = document.createElement('div');
+
+// clone the existing body and append it to the new div element
+const clonedBody = document.body.cloneNode(true);
+newBody.appendChild(clonedBody);
+
+// append the new div element to the body to create a duplicate body
+document.body.appendChild(newBody);
+
+
+
+
+
+
+
+const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+// set up a scroll listener
+window.addEventListener('scroll', () => {
+  // get the current scroll position
+  let scrollPos = window.scrollY;
+
+  // if the scroll position is greater than or equal to the height of the document, set it to 0
+  if (scrollPos >= docHeight) {
+    scrollPos = 0;
+  }
+
+  // set the new scroll position
+  window.scrollTo(0, scrollPos);
+});
