@@ -194,6 +194,10 @@ if (document.body.innerText.includes('Blurred Screen')) {
   // document.querySelector('#cursor').setAttribute('style', 'display: none;');
 }
 
+if (document.body.innerText.includes('Infinite Scrolling')) {
+  infiniteScroll();
+}
+
 // ===== Cheats Array
 const existingCheats = ["Big-Head Mode", "Unlimited Clicking", "Infinite Scrolling", 'Paintball Mode', 'X-Ray Mode', 'Blurred Screen', 'Plumber SFX', 'Elf SFX'];
 
@@ -229,6 +233,7 @@ cheatBtn.addEventListener("click", function(e) {
     if (userInput === 'NoLimit') {
     newCheatsA.textContent = existingCheats[2];
     activeCheatsDiv.appendChild(newCheatsA);
+    infiniteScroll();
   } else 
     // ===== Paintball Mode
     if (userInput === 'SplatterHouse') {
@@ -554,12 +559,15 @@ slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`
 
 
 // vvvvvvvvvv Unlimited Clicking Function vvvvvvvvvv
+unlimitedClicking();
 
 function unlimitedClicking() {
   // Create the array for the images
   const bImages = [];
   // Declate interval variable
   let intervalCount;
+  // Check if function is running
+  let isFunctionRunning = false;
   // Declare the default audio sound
   const sound = new Audio('Sounds/HMG-SuperPhat.wav');
 
@@ -569,8 +577,10 @@ function unlimitedClicking() {
   document.addEventListener('mouseup', end);
   document.addEventListener('touchend', end);
   document.addEventListener('touchmove', move);
+  document.addEventListener('mousemove', move);
 
   function start(event) {
+    isFunctionRunning = true;
     intervalCount = setInterval(() => {
       // Create the bullet hole image
       let img = document.createElement('img');
@@ -602,6 +612,12 @@ function unlimitedClicking() {
     sound.currentTime = 0;
   }
 
+
+  function move(event) {
+    event.preventDefault();
+  }
+  
+
   // Function to end the sound
   function end() {
     sound.pause();
@@ -621,64 +637,44 @@ function unlimitedClicking() {
   }
 
   // Function to prevent unintended scrolling while active
-  function move(event) {
-    event.preventDefault();
-  }
+  
 }
+
+
+
+
+
+
+
 
 
 // ^^^^^^^^^^ Unlimited Clicking Function ^^^^^^^^^^
 
 
-// const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-// // set up a scroll listener
-// window.addEventListener('scroll', () => {
-//   // get the current scroll position
-//   let scrollPos = window.scrollY;
-
-//   // if the scroll position is greater than or equal to the height of the document, set it to 0
-//   if (scrollPos >= docHeight) {
-//     scrollPos = 0;
-//   }
-
-//   // set the new scroll position
-//   window.scrollTo(0, scrollPos);
-// });
-
-
-
-
-
-
-// create a new div element to hold the duplicated body
+function infiniteScroll() {
+// Create a new div element to hold the duplicated body
 const newBody = document.createElement('div');
 
-// clone the existing body and append it to the new div element
+// Copy the existing body
 const clonedBody = document.body.cloneNode(true);
 newBody.appendChild(clonedBody);
 
-// append the new div element to the body to create a duplicate body
+// Add the new div to the bottome of the body
 document.body.appendChild(newBody);
-
-
-
-
-
-
 
 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-// set up a scroll listener
+// Set a scroll listener
 window.addEventListener('scroll', () => {
-  // get the current scroll position
+  // Get the current scroll position
   let scrollPos = window.scrollY;
 
-  // if the scroll position is greater than or equal to the height of the document, set it to 0
+  // If the scroll position is greater than or equal to the height of the document, set it to 0
   if (scrollPos >= docHeight) {
     scrollPos = 0;
-  }
+  };
 
-  // set the new scroll position
+  // Set the new scroll position
   window.scrollTo(0, scrollPos);
 });
+};
