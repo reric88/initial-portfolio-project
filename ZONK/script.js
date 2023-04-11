@@ -1,6 +1,7 @@
 // Define variables for the game
 let gameStart = false;
-let currentRoom = 1;
+
+let currentRoom = 999;
 let lastRoom = 0;
 let prevRoom = currentRoom;
 let inventory = [];
@@ -20,24 +21,20 @@ function hideBtn() {
   setTimeout(() => {
     if (
       startBtn.className === "play-btn" &&
-      reloadBtn.className === "hide-btn" &&
-      gameStart === false
+      reloadBtn.className === "hide-btn"
     ) {
       startBtn.className = "hide-btn";
       reloadBtn.className = "play-btn";
-      gameStart = true;
       startGame();
     } else if (
       startBtn.className === "hide-btn" &&
-      reloadBtn.className === "play-btn" &&
-      gameStart === true
+      reloadBtn.className === "play-btn"
     ) {
       startBtn.className = "play-btn";
       reloadBtn.className = "hide-btn";
       outputDiv.innerHTML = "";
       // pauseAudio('Sounds/forestEthnoAmbience.wav');
       pauseLoop();
-      gameStart = false;
     }
   }, 150);
 }
@@ -54,8 +51,11 @@ runLoop();
 
 // document.getElementById('forest-ambience')
 
-// #region Start and End Game
+// #region Start and End Game ===============================
 function startGame() {
+  gameStart = true;
+  currentRoom = 1;
+  initializeControls();
   // audio.play();
   // playAudio();
   // playAudio('Sounds/forestEthnoAmbience.wav');
@@ -70,12 +70,12 @@ function startGame() {
 
 function endGame() {
   pauseLoop();
-  currentRoom = 1;
+  currentRoom = 999;
   outputDiv.innerHTML = "Game ended";
 }
 // #endregion
 
-// #region Audio Control
+// #region Audio Control  ===================================
 
 function audioControl(src, playPause) {
   if (playPause == "play") {
@@ -102,7 +102,7 @@ function pauseLoop() {
 }
 // #endregion
 
-// #region Died and Win
+// #region Died and Win  ====================================
 
 function died() {
   let startBtn = document.querySelector("#s-btn");
@@ -128,7 +128,7 @@ function win() {
 
 // #endregion
 
-// #region Display Image
+// #region Display Image  ===================================
 
 function displayImage(src) {
   const img = document.createElement("img");
@@ -139,7 +139,7 @@ function displayImage(src) {
 
 // #endregion
 
-// #region Open Bag
+// #region Open Bag  ========================================
 
 function openBag() {
   invIndex = 0;
@@ -153,7 +153,7 @@ function openBag() {
 
 // #endregion
 
-// #region Print Inventory
+// #region Print Inventory  =================================
 function printInventory() {
   let audioType = new Audio("Sounds/keyboardKey.wav");
   if (invIndex < inventory.toString().length) {
@@ -173,7 +173,7 @@ function printInventory() {
 
 // #endregion
 
-// #region old inventory code
+// #region old inventory code  ==============================
 
 // let invIndex = -1;
 
@@ -236,9 +236,8 @@ function printInventory() {
 
 // #endregion
 
-console.log(gameStart);
-if (gameStart) {
-  console.log("Keys Executed");
+// #region Movement Controls ================================
+function initializeControls() {
   document.getElementById("north").addEventListener("click", function () {
     handleInput("north");
   });
@@ -281,7 +280,9 @@ if (gameStart) {
       }
     });
 }
-// #region print users input
+// #endregion
+
+// #region print users input ================================
 function printUserInput(input) {
   let inputDiv = document.getElementById("input");
   let p = document.createElement("p");
@@ -292,15 +293,14 @@ function printUserInput(input) {
 
 // #endregion
 
-if (currentRoom === 1) {
+// if (currentRoom === 1) {
   // const shackImageElement = document.querySelector("#shack-image")
   // shackImageElement.appendChild(img)
   // displayImage('Images/shack.png')
-  gamestart = true;
   // console.log(gameStart);
-}
+// }
 
-// #region ROOMS
+// #region ROOMS ============================================
 
 // Define function for printing room description
 function printRoomDescription() {
@@ -377,6 +377,8 @@ function printRoomDescription() {
     default:
       description = "You are lost.";
       break;
+    case 999:
+      description = "Please Start Game";
   }
   // console.log(description);
   // index = 0;
@@ -460,7 +462,7 @@ const roomDescription = {
 let typedDescription = roomDescription;
 let index = 0;
 
-// #region Print Look
+// #region Print Look  ========================================
 
 function printLook() {
   console.log(roomDescription[1].length);
@@ -512,7 +514,7 @@ const itemList = {
   21: "No item yet.",
 };
 
-// #region Take Item
+// #region Take Item  ========================================
 
 function takeItem() {
   const roomItem = itemList[currentRoom];
@@ -541,7 +543,7 @@ function takeItem() {
 }
 // #endregion
 
-// #region Controls
+// #region Controls  =========================================
 
 // DIRECTIONS
 
