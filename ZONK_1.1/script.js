@@ -111,7 +111,7 @@ function startGame() {
     // playLoop();
     initializeControls();
     document.getElementById("pers-output").innerHTML +=
-      "<p>Welcome to the game! Type 'help' for a list of commands. Actually don't bother, just use the buttons.</p>" +
+      "<p>Welcome to the game! Type 'help' for a list of commands. Or just use the buttons.</p>" +
       "<p>You awaken, confused. Your head aches with the furor of Jack Rebney.</p>";
     printRoomDescription();
   }
