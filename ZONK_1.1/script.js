@@ -75,7 +75,7 @@ function sfxToggle() {
 function hideBtn() {
   let startBtn = document.querySelector("#s-btn");
   let reloadBtn = document.querySelector("#r-btn");
-  let persDiv = document.getElementById("pers-output");
+  // let persDiv = document.getElementById("pers-output");
   setTimeout(() => {
     if (startBtn.className === "play-btn" && reloadBtn.className === "hide") {
       startBtn.className = "hide";
@@ -85,10 +85,11 @@ function hideBtn() {
       startBtn.className === "hide" &&
       reloadBtn.className === "play-btn"
     ) {
-      startBtn.className = "play-btn";
-      reloadBtn.className = "hide";
-      persDiv.innerHTML = "";
-      pauseLoop();
+      location.reload()
+      // startBtn.className = "play-btn";
+      // reloadBtn.className = "hide";
+      // persDiv.innerHTML = "";
+      // pauseLoop();
     }
   }, 150);
 }
@@ -105,7 +106,9 @@ function startGame() {
     document.getElementById(
       "room-id"
     ).innerHTML += `Current Room: ${currentRoom}, Previous Room: ${previousRoom}`;
-    playLoop();
+    musicToggle();
+    sfxToggle();
+    // playLoop();
     initializeControls();
     document.getElementById("pers-output").innerHTML +=
       "<p>Welcome to the game! Type 'help' for a list of commands. Actually don't bother, just use the buttons.</p>" +
@@ -421,6 +424,21 @@ function printRoomDescription() {
 
 // #endregion
 
+// #region printHelp() for commands
+
+function printHelp() {
+  persDiv.innerHTML += `<br><p><strong>For all commands, your capitalization does not matter.</strong></p>`
+  persDiv.innerHTML += `<p>* <strong>North</strong> to move North.</p>`
+  persDiv.innerHTML += `<p>* <strong>South</strong> to move South.</p>`
+  persDiv.innerHTML += `<p>* <strong>East</strong> to move East.</p>`
+  persDiv.innerHTML += `<p>* <strong>West</strong> to move West.</p>`
+  persDiv.innerHTML += `<p>* <strong>Take</strong> to pick up an item.</p>`
+  persDiv.innerHTML += `<p>* <strong>Inv</strong> to check your inventory.</p>`
+  persDiv.innerHTML += `<p>* <strong>Look</strong> to examine your surroundings.</p>`
+}
+
+// #endregion
+
 // #region printLook() for room description
 function printLook() {
   const description = lookDescription[currentRoom];
@@ -621,6 +639,7 @@ function handleInput(input) {
       east: 3,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     2: {
@@ -628,6 +647,7 @@ function handleInput(input) {
       south: 1,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     3: {
@@ -637,6 +657,7 @@ function handleInput(input) {
       west: 1,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     4: {
@@ -645,12 +666,14 @@ function handleInput(input) {
       west: 18,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     5: {
       west: 6,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     6: {
@@ -659,6 +682,7 @@ function handleInput(input) {
       south: 16,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     7: {
@@ -667,6 +691,7 @@ function handleInput(input) {
       south: 8,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     8: {
@@ -674,6 +699,7 @@ function handleInput(input) {
       south: 9,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     9: {
@@ -682,6 +708,7 @@ function handleInput(input) {
       west: 14,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     10: {
@@ -690,6 +717,7 @@ function handleInput(input) {
       east: 11,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     11: {
@@ -698,6 +726,7 @@ function handleInput(input) {
       south: 20,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     12: {
@@ -705,18 +734,21 @@ function handleInput(input) {
       west: 11,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     13: {
       west: 15,
       look: "look",
       take: "take",
+      help: "help",
     },
 
     14: {
       east: 9,
       look: "look",
       take: "take",
+      help: "help",
       north: 141,
       south: 142,
     },
@@ -727,6 +759,7 @@ function handleInput(input) {
       west: "win",
       look: "look",
       take: "take",
+      help: "help",
     },
   };
 
@@ -787,6 +820,8 @@ function handleInput(input) {
     footstepsGravelAudio.play();
     document.getElementById("pers-output").innerHTML += west;
     printRoomDescription();
+  } else if (transition === "help"){
+    printHelp();
   } else if (transition === "look") {
     printLook();
   } else if (transition === "take") {
