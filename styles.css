@@ -219,6 +219,14 @@ html {
     /* background-color: #8c8; */
 }
 
+#about-menu p {
+    width: 700px;
+    line-height: 25px;
+    color: white;
+    font-weight: 500;
+    margin: auto 0;
+}
+
 #contact-menu {
     /* background-color: #1A1B1D; */
 }

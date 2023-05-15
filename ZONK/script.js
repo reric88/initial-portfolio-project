@@ -1,5 +1,4 @@
 // Define variables for the game
-let gameStart = false;
 
 let currentRoom = 999;
 let lastRoom = 0;
@@ -39,13 +38,11 @@ function hideBtn() {
   }, 150);
 }
 
-// console.log(gameStart);
-function runLoop() {
-  setTimeout(() => {
-    // console.log(gameStart);
-    runLoop();
-  }, 500);
-}
+// function runLoop() {
+//   setTimeout(() => {
+//     runLoop();
+//   }, 500);
+// }
 
 runLoop();
 
@@ -53,8 +50,10 @@ runLoop();
 
 // #region Start and End Game ===============================
 function startGame() {
-  gameStart = true;
+  if (!gameRunning) {
+    gameRunning = true;
   currentRoom = 1;
+  prevRoom = 1;
   initializeControls();
   // audio.play();
   // playAudio();
@@ -66,7 +65,8 @@ function startGame() {
     "<p>You awaken, confused. Your head aches with the furor of Jack Rebney.</p>";
 
   printRoomDescription();
-}
+};
+};
 
 function endGame() {
   pauseLoop();
@@ -293,12 +293,6 @@ function printUserInput(input) {
 
 // #endregion
 
-// if (currentRoom === 1) {
-  // const shackImageElement = document.querySelector("#shack-image")
-  // shackImageElement.appendChild(img)
-  // displayImage('Images/shack.png')
-  // console.log(gameStart);
-// }
 
 // #region ROOMS ============================================
 
